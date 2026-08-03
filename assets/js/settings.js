@@ -26,11 +26,11 @@ var topBtn = $('#page-top');
 $(window).scroll(function () {
     if ( $(this).scrollTop() > 10) {
 	    myHeader.addClass('fixedHd');
-		$('.hem').css('background-color', '#fff')
-		$('.list').css('color', '#fff')
+		$('.hem').css('background-color', '#2944A1')
+		$('.list').css('color', '#2944A1')
     } else {
 		myHeader.removeClass('fixedHd');
-		$('.hem').css('background-color', '#fff')
+		$('.hem').css('background-color', '#2944A1')
 		$('.list').css('color', '#3d3d3d')
     }
     if ($(this).scrollTop() > 600) {
