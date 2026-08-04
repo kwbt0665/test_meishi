@@ -39,8 +39,10 @@
 	<link href="assets/css/block-grid.css" rel="stylesheet" type="text/css">
 	<!-- Swiper -->
 	<link href="assets/css/swiper.min.css" rel="stylesheet" type="text/css">
+	<!-- Fancybox -->
+	<link href="assets/css/fancybox.css" rel="stylesheet" type="text/css">
 	<!-- Custom styles -->
-	<link href="assets/css/style.css?v=20251029" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -192,21 +194,21 @@
 				<ul>
 					<li>
 						<p class="type_txt">標準名刺<br class="tb_br">【片面】横向き</p>
-						<div class="type_01"><img src="assets/img/standard_meishi.png" alt="標準名刺【片面】横向き"></div>
+						<div class="type_01"><a href="assets/img/standard_meishi_modal.png" data-fancybox data-type="image" data-caption="標準名刺【片面】横向き"><img class="adjust" src="assets/img/standard_meishi.png" alt="標準名刺【片面】横向き" /></a></div>
 						<p class="size_txt">縦:55mm <br class="tb_br">横:91mm</p>
-						<div class="sample"><img src="assets/img/standard_meishi_print.png" alt="標準名刺【片面】横向き"></div>
+						<div class="sample"><a href="assets/img/standard_meishi_print.png" data-fancybox data-type="image" data-caption="標準名刺【片面】横向き"><img class="adjust" src="assets/img/standard_meishi_print.png" alt="標準名刺【片面】横向き" /></a></div>
 					</li>
 					<li>
 						<p class="type_txt">標準名刺<br class="tb_br">【両面】横向き</p>
-						<div class="type_02"><img src="assets/img/standard_meishi_double.png" alt="標準名刺【両面】横向き"></div>
+						<div class="type_02"><a href="assets/img/standard_meishi_double_modal.png" data-fancybox data-type="image" data-caption="標準名刺【両面】横向き"><img class="adjust" src="assets/img/standard_meishi_double.png" alt="標準名刺【両面】横向き" /></a></div>
 						<p class="size_txt">折って 縦:55mm 横:91mm</p>
-						<div class="sample"><img src="assets/img/standard_meishi_double_print.png" alt="標準名刺【両面】横向き"></div>
+						<div class="sample"><a href="assets/img/standard_meishi_double_print.png" data-fancybox data-type="image" data-caption="標準名刺【両面】横向き"><img class="adjust" src="assets/img/standard_meishi_double_print.png" alt="標準名刺【両面】横向き" /></a></div>
 					</li>
 					<li>
 						<p class="type_txt">スクエア名刺<br class="tb_br">【片面】</p>
-						<div class="type_03"><img src="assets/img/square_meishi.png" alt="スクエア名刺【片面】"></div>
+						<div class="type_03"><a href="assets/img/square_meishi_modal.png" data-fancybox data-type="image" data-caption="スクエア名刺【片面】"><img class="adjust" src="assets/img/square_meishi.png" alt="スクエア名刺【片面】" /></a></div>
 						<p class="size_txt">縦:63mm <br class="tb_br">横:62mm</p>
-						<div class="sample"><img src="assets/img/square_meishi_print.png" alt="スクエア名刺【片面】"></div>
+						<div class="sample"><a href="assets/img/square_meishi_print.png" data-fancybox data-type="image" data-caption="スクエア名刺【片面】"><img class="adjust" src="assets/img/square_meishi_print.png" alt="スクエア名刺【片面】" /></a></div>
 					</li>
 				</ul>
 				
@@ -400,8 +402,10 @@
 	<script src="assets/js/jquery.lazyload.min.js"></script>
 	<!-- SmoothScroll -->
 	<script src="assets/js/smoothScroll.js"></script>
+	<!-- Fancybox -->
+	<script src="assets/js/fancybox.umd.js"></script>
 	<!-- Settings -->
-	<script src="assets/js/settings.js?v=20201021"></script>
+	<script src="assets/js/settings.js?"></script>
 	<!-- card.js -->
 	<script src="assets/js/cards.js"></script>
 
@@ -598,6 +602,11 @@
 			timer = setTimeout(window.renderShowcase, 250);
 		});
 		})();
+		</script>
+		<script>
+			Fancybox.bind("[data-fancybox]", {
+				closeButton: true,
+			});
 		</script>
 </body>
 <script>
