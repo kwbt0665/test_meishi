@@ -15,14 +15,9 @@ $myYellow:#F0CD3F;
 $myBlue:#2944A1;
 $myDeepBlue:#273E8E;
 
-
-$myAquablue:#8AEDDD;
 $myPink:#ED839F;
 $myGreen:#1fb1a5;
-$myDeepGreen:#1bbc9d;
-$myPurple:#B49ADB;
 $myBlack:#000000;
-$myGray:#565050;
 
 /* -------- Font -------- */
 @mixin ft_txt{
@@ -1301,31 +1296,34 @@ footer{
 /*-------------- Feature01 -----------------*/
 
 .feature01{
-		padding: 100px;
-		background-image: url(../img/feature01_bg.jpg);
-		background-position: 50% 40%;
-		background-size: cover;
-		@media (max-width: 1400px){
-			padding: 100px 0;
-			background-color: $myBlue;
-			background-image :none;
-		}
+		background-color: $myBlue;
 		@media (max-width: 900px){
-			padding: 80px 0;
-		}
+				padding: 80px 0 80px;
+			}
 		@media (max-width: 650px){
-			padding: 40px 0 60px;
-		}
+				padding: 40px 0 60px;
+			}
 	.feature_box{
-		width: 1240px;
-		max-width: 100%;
-		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		@media (max-width: 900px){
+				display :block;
+			}
+		.card_img{
+			width: 50%;
+			@media (max-width: 900px){
+				display :none;
+			}
+		}
 		.feature_smallbox{
-			width: 590px;
-			max-width: 100%;
-			margin-left: auto; //要素全体を右寄せ
+			width: 50%;
+			padding: 0 100px 0 70px;
 			@media (max-width: 1400px){
+				padding: 0 60px 0 50px;
+			}
+			@media (max-width: 900px){
 				width: 100%;
+				padding: 0 ;
 				margin: 0 auto;
 			}
 			h2{
@@ -1334,16 +1332,18 @@ footer{
 				font-weight: 600;
 				line-height: 1.3;
 				letter-spacing: 0.2rem;
-				margin-bottom: 60px;
-				@media (max-width: 1400px){
-					text-align: center;
-					padding: 0 100px;
+				margin-bottom: 70px;
+				@media (max-width: 1360px){
+					font-size: 2rem;
+					margin-bottom: 30px;
+				}
+				@media (max-width: 1100px){
+					font-size: 1.6rem;
+					margin-bottom: 15px;
 				}
 				@media (max-width: 900px){
-					padding: 0 80px;
-				}
-				@media (max-width: 1200px){
-					font-size: 2rem;
+					text-align: center;
+					margin-bottom: 40px;
 				}
 				@media (max-width: 650px){
 					font-size: 1.375rem;
@@ -1352,34 +1352,37 @@ footer{
 					margin-bottom: 40px;
 				}
 			}
-			.card_img{
+			.sp_card_img{
 				display: none;
-				@media (max-width: 1400px){
+				@media (max-width: 900px){
 					display: block;
-					margin: 0 auto;
-					width: 1040px;
-					max-width: 100%;
 				}
 			}
 			.feature_txt{
 				font-size: 1.125rem;
+				text-align: justify;
 				color: #fff;
 				line-height: 2.1;
 				margin-bottom: 60px;
-				@media (max-width: 1400px){
+				@media (max-width: 1360px){
 					font-size: 1rem;
-					margin: 60px 0;
-					padding: 0 100px;
+					line-height: 1.6;
+					margin-bottom: 40px;
+				}
+				@media (max-width: 1100px){
+					font-size: 0.875rem;
+					margin-bottom: 20px;
 				}
 				@media (max-width: 900px){
-					padding: 0 80px;
+					font-size: 1.125rem;
+					font-weight: 600;
+					margin: 60px 80px 70px;
 				}
 				@media (max-width: 650px){
 					font-size: 0.875rem;
 					line-height: 1.8;
 					padding: 0 30px;
 					margin: 40px 0 60px;
-					font-weight: 600;
 				}
 			}
 			.service_box{
@@ -1388,7 +1391,6 @@ footer{
 				padding: 20px 20px 30px 20px;
 				text-align: center;
 				@media (max-width: 1400px){
-					margin: 0 100px;
 				}
 				@media (max-width: 900px){
 					margin: 0 80px;
@@ -1425,6 +1427,9 @@ footer{
 					border-bottom: #333 1px solid;
 					padding: 0 0 15px 0;
 					margin: 0 0 20px 0;
+					@media (max-width: 1100px){
+						font-size: 1.125rem;
+					}
 					@media (max-width: 650px){
 						font-size: 1rem;
 						padding: 0 0 15px 0;
@@ -1784,10 +1789,10 @@ footer{
 	background-color: $myDeepBlue;
 	padding: 120px;
 	@media (max-width: 1400px){
-			padding: 100px;
+			padding: 100px 30px;
 		}
 	@media (max-width: 900px){
-			padding: 80px;
+			padding: 80px 30px;
 		}
 	@media (max-width: 650px){
 			padding: 60px 30px;
@@ -1909,6 +1914,10 @@ footer{
 					@media (max-width: 650px){
 						width: 100%;
 					}
+				}
+				a:focus,
+				a:focus-visible {
+					outline: none;
 				}
 			}
 		}
