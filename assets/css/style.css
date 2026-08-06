@@ -1192,7 +1192,7 @@ footer .ft .ftImg {
 }
 @media (max-width: 1100px) {
   .feature01 .feature_box .feature_smallbox h2 {
-    font-size: 1.6rem;
+    font-size: 1.5625rem;
     margin-bottom: 15px;
   }
 }
@@ -1206,6 +1206,7 @@ footer .ft .ftImg {
   .feature01 .feature_box .feature_smallbox h2 {
     font-size: 1.375rem;
     letter-spacing: 0.1rem;
+    line-height: 1.5;
     padding: 0 30px;
     margin-bottom: 40px;
   }
@@ -1241,13 +1242,13 @@ footer .ft .ftImg {
 @media (max-width: 900px) {
   .feature01 .feature_box .feature_smallbox .feature_txt {
     font-size: 1.125rem;
-    font-weight: 600;
     margin: 60px 80px 70px;
   }
 }
 @media (max-width: 650px) {
   .feature01 .feature_box .feature_smallbox .feature_txt {
     font-size: 0.875rem;
+    font-weight: 600;
     line-height: 1.8;
     padding: 0 30px;
     margin: 40px 0 60px;
