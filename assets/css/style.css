@@ -4148,14 +4148,38 @@ footer .ft .ftImg {
 }
 
 /* -------- howto -------- */
+@media (max-width: 600px) {
+  .howto_contents {
+    background-color: #F5F5F5;
+  }
+}
 .howto_contents .howto_title {
   position: relative;
-  font-size: clamp(1rem, 2.5vw, 2.5rem);
-  margin-bottom: 60px;
+  font-size: 2.5rem;
+  margin: 130px 0 60px 0;
   padding-left: 80px;
   font-weight: bold;
   display: inline-block;
   color: #333;
+}
+@media (max-width: 1200px) {
+  .howto_contents .howto_title {
+    font-size: 1.5625rem;
+    margin: 90px 0 40px 0;
+    padding-left: 55px;
+  }
+}
+@media (max-width: 600px) {
+  .howto_contents .howto_title {
+    font-size: 1.375rem;
+    margin: 55px 0 20px 0;
+    padding-left: 30px;
+  }
+}
+@media (max-width: 400px) {
+  .howto_contents .howto_title {
+    font-size: 1rem;
+  }
 }
 .howto_contents .howto_title::before {
   position: absolute;
@@ -4168,56 +4192,296 @@ footer .ft .ftImg {
   top: 0.5rem;
   left: 0;
 }
+@media (max-width: 1200px) {
+  .howto_contents .howto_title::before {
+    width: 40px;
+    height: 40px;
+    top: 0;
+  }
+}
+@media (max-width: 600px) {
+  .howto_contents .howto_title::before {
+    width: 20px;
+    height: 20px;
+    top: 0.3rem;
+  }
+}
 .howto_contents .howto_title.question {
   padding-left: 70px;
+  margin: 0 0 60px 0;
+}
+@media (max-width: 1200px) {
+  .howto_contents .howto_title.question {
+    margin: 0 0 40px 0;
+  }
+}
+@media (max-width: 600px) {
+  .howto_contents .howto_title.question {
+    padding-left: 30px;
+    margin: 0 0 20px 30px;
+  }
 }
 .howto_contents .howto_title.question::before {
+  position: absolute;
+  content: "";
+  display: inline-block;
   width: 50px;
   height: 50px;
   background: url(../img/howto/question.svg) no-repeat;
+  background-size: contain;
+  top: 0.5rem;
+  left: 0;
 }
-.howto_contents .howto_box {
+@media (max-width: 1200px) {
+  .howto_contents .howto_title.question::before {
+    width: 40px;
+    height: 40px;
+    top: 0;
+  }
+}
+@media (max-width: 600px) {
+  .howto_contents .howto_title.question::before {
+    width: 20px;
+    height: 20px;
+    top: 0.2rem;
+  }
+}
+.howto_contents .contents_bg {
+  overflow-x: hidden;
   background-color: #F5F5F5;
-  padding: 210px 0 30px;
+  padding-bottom: 100px;
 }
-.howto_contents .howto_box .inner {
-  margin-inline: auto;
-  max-width: 1060px;
-  padding: 0 30px;
+@media (max-width: 1200px) {
+  .howto_contents .contents_bg {
+    padding-bottom: 80px;
+  }
 }
-.howto_contents .howto_box .howto_slider {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  padding-left: calc(50vw - 50%);
+@media (max-width: 600px) {
+  .howto_contents .contents_bg {
+    padding: 0 0 60px 10px;
+  }
 }
-.howto_contents .howto_box .howto_slider .splide__slide {
+.howto_contents .contents_bg .slider-area {
+  /* PC時のカード幅最大500px*/
+  --card-width: min(500px,calc((100vw - 100px) / 2));
+  /* カード間 */
+  --card-gap: 60px;
+  /* 3枚目の見切れ幅 */
+  --peek-width: 80px;
+  position: relative;
+  /*1・2枚目を中央に配置*/
+  margin-left: calc(50% - var(--card-width) - var(--card-gap) / 2);
+  /*3枚目を見せるための幅*/
+  width: calc(50% + var(--card-width) + var(--card-gap) / 2 + var(--peek-width));
+  margin-top: 50px;
+  /*矢印を外側に出すため*/
+  overflow: visible;
+}
+@media (max-width: 1200px) {
+  .howto_contents .contents_bg .slider-area {
+    --card-gap: 40px;
+    /*3枚目を見せる幅 */
+    --peek-width: calc(
+    ((100vw - 40px - 40px) / 2) * 0.3
+    );
+    /*3枚目のスペースを確保して1・2枚目を縮小*/
+    --card-width: calc(
+    (100vw - 40px - 40px - var(--peek-width)) / 2
+    );
+    margin-left: 40px;
+    width: calc(100vw - 40px);
+  }
+}
+@media (max-width: 600px) {
+  .howto_contents .contents_bg .slider-area {
+    /*カード間*/
+    --card-gap: 30px;
+    /*3枚目を約50%表示*/
+    --peek-width: calc(((100vw - 20px - 30px) / 2 ) * 0.5);
+    /*カード幅 */
+    --card-width: calc((100vw - 20px - 30px - var(--peek-width)) / 2);
+    margin-left: 20px;
+    width: calc(100vw - 20px);
+    margin-top: 30px;
+  }
+}
+@media (max-width: 400px) {
+  .howto_contents .contents_bg .slider-area {
+    --card-gap: 20px;
+    /*3枚目を約50%表示*/
+    --peek-width: calc(((100vw - 20px - 20px) / 2) * 0.5);
+    /*カード幅*/
+    --card-width: calc((100vw - 20px - 20px - var(--peek-width)) / 2);
+  }
+}
+.howto_contents .contents_bg .slider-area #step-slider {
   width: 100%;
+  overflow: hidden;
 }
-.howto_contents .howto_box .splide__arrow svg {
-  display: none;
+.howto_contents .contents_bg .slider-area #step-slider .splide__track {
+  overflow: visible;
 }
-.howto_contents .howto_box .splide__arrow--prev {
-  background: url("../img/howto/arrow_left.svg") center/contain no-repeat;
-  left: -4rem;
-  top: 45%;
+.howto_contents .contents_bg .slider-area #step-slider .splide__slide {
+  width: var(--card-width) !important;
 }
-.howto_contents .howto_box .splide__arrow--next {
-  background: url("../img/howto/arrow_right.svg") center/contain no-repeat;
-  right: 16em;
-  top: 45%;
+.howto_contents .contents_bg .slider-area .step-card {
+  width: var(--card-width);
 }
-.howto_contents .howto_make {
+.howto_contents .contents_bg .slider-area .step-card .step-image {
+  width: var(--card-width);
+  /*PC・タブレットは正方形*/
+  height: var(--card-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+@media (max-width: 600px) {
+  .howto_contents .contents_bg .slider-area .step-card .step-image {
+    /*横15 : 縦12*/
+    height: calc(var(--card-width) * 12 / 15);
+    border-radius: 12px;
+  }
+}
+.howto_contents .contents_bg .slider-area .step-card .step-image.blue {
+  background: #4058a5;
+}
+.howto_contents .contents_bg .slider-area .step-card .step-image.green {
+  background: #4cab43;
+}
+.howto_contents .contents_bg .slider-area .step-card .step-image.yellow {
+  background: #f6d13c;
+}
+.howto_contents .contents_bg .slider-area .step-card .step-image img {
+  width: 36%;
+  height: 36%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.howto_contents .contents_bg .slider-area .step-card .step-text {
+  margin: 31px 0 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 500;
+  color: #333;
+}
+@media (max-width: 600px) {
+  .howto_contents .contents_bg .slider-area .step-card .step-text {
+    margin-top: 18px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: justify;
+  }
+}
+@media (max-width: 400px) {
+  .howto_contents .contents_bg .slider-area .step-card .step-text {
+    font-size: 0.75rem;
+  }
+}
+.howto_contents .contents_bg .slider-area .slider-arrow {
+  position: absolute;
+  /*タイトルを考慮してカード中央に配置*/
+  top: calc(250px + var(--card-width) / 2);
+  width: 30px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transform: translateY(-50%);
+  z-index: 100;
+  cursor: pointer;
+}
+@media (max-width: 1200px) {
+  .howto_contents .contents_bg .slider-area .slider-arrow {
+    display: none;
+  }
+}
+.howto_contents .contents_bg .slider-area .slider-arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 4px;
+  border-radius: 10px;
+  background: #4058a5;
+  transition: background-color 0.2s ease;
+}
+.howto_contents .contents_bg .slider-area .slider-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 4px;
+  border-radius: 10px;
+  background: #4058a5;
+  transition: background-color 0.2s ease;
+}
+.howto_contents .contents_bg .slider-area .slider-arrow.slider-arrow--prev {
+  left: -55px;
+}
+@media (max-width: 1200px) {
+  .howto_contents .contents_bg .slider-area .slider-arrow.slider-arrow--prev {
+    left: -40px;
+  }
+}
+.howto_contents .contents_bg .slider-area .slider-arrow.slider-arrow--prev::before {
+  left: 2px;
+  transform: translateY(-8px) rotate(-45deg);
+}
+.howto_contents .contents_bg .slider-area .slider-arrow.slider-arrow--prev::after {
+  left: 2px;
+  transform: translateY(8px) rotate(45deg);
+}
+.howto_contents .contents_bg .slider-area .slider-arrow.slider-arrow--next {
+  left: calc(var(--card-width) * 2 + var(--card-gap) + 15px);
+}
+@media (max-width: 1200px) {
+  .howto_contents .contents_bg .slider-area .slider-arrow.slider-arrow--next {
+    left: calc(var(--card-width) * 2 + var(--card-gap) + 5px);
+  }
+}
+.howto_contents .contents_bg .slider-area .slider-arrow.slider-arrow--next::before {
+  right: 2px;
+  transform: translateY(-8px) rotate(45deg);
+}
+.howto_contents .contents_bg .slider-area .slider-arrow.slider-arrow--next::after {
+  right: 2px;
+  transform: translateY(8px) rotate(-45deg);
+}
+.howto_contents .contents_bg .slider-area .slider-arrow:hover::before,
+.howto_contents .contents_bg .slider-area .slider-arrow:hover::after {
+  background: #91a0cc;
+}
+.howto_contents .contents_bg_m {
+  padding: 100px 30px;
+}
+@media (max-width: 1200px) {
+  .howto_contents .contents_bg_m {
+    padding: 80px 30px;
+  }
+}
+@media (max-width: 600px) {
+  .howto_contents .contents_bg_m {
+    padding: 0;
+  }
+}
+.howto_contents .contents_bg_m .howto_make {
   max-width: 1040px;
   width: 100%;
   margin: 0 auto;
-  padding: 100px 0;
 }
-.howto_contents .howto_make .howto_list {
+.howto_contents .contents_bg_m .howto_make .howto_list {
   border: #D9D9D9 solid 1px;
+  background-color: #fff;
 }
-.howto_contents .howto_make .howto_list .list_detail {
-  font-size: 1rem;
-  color: #333;
+@media (max-width: 600px) {
+  .howto_contents .contents_bg_m .howto_make .howto_list {
+    border: none;
+  }
+}
+.howto_contents .contents_bg_m .howto_make .howto_list .list_detail {
   padding: 30px 300px 30px 30px;
   border-bottom: #D9D9D9 solid 1px;
   background-image: url(../img/howto/arrow_right.svg);
@@ -4225,118 +4489,36 @@ footer .ft .ftImg {
   background-repeat: no-repeat;
   background-size: 10px 18px;
 }
-.howto_contents .howto_make .howto_list .list_detail:last-child {
+.howto_contents .contents_bg_m .howto_make .howto_list .list_detail:last-child {
   border-bottom: none;
 }
-
-/* modal */
-.modal-trigger {
-  cursor: pointer;
+@media (max-width: 1200px) {
+  .howto_contents .contents_bg_m .howto_make .howto_list .list_detail {
+    padding: 30px 50px 30px 30px;
+  }
 }
-.modal-trigger:hover {
+@media (max-width: 600px) {
+  .howto_contents .contents_bg_m .howto_make .howto_list .list_detail {
+    padding: 20px 50px 20px 30px;
+    border-bottom: none;
+    border-top: #D9D9D9 solid 1px;
+    background-position: right 15px top 50%;
+  }
+}
+.howto_contents .contents_bg_m .howto_make .howto_list .list_detail .modal-trigger {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+}
+.howto_contents .contents_bg_m .howto_make .howto_list .list_detail .modal-trigger:hover {
   color: #2944A1;
 }
-
-/* モーダル */
-.modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-}
-
-/* モーダルが開いている状態 */
-.modal.is-open {
-  display: flex;
-}
-
-/* 背景 */
-.modal__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-}
-
-/* モーダル本体 */
-.modal__content {
-  position: relative;
-  z-index: 1;
-  width: 1040px;
-  max-width: 90vw;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 0;
-}
-
-/* 閉じるボタン */
-.modal__close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background: none;
-  font-size: 40px;
-  line-height: 1;
-  cursor: pointer;
-  color: #fff;
-  z-index: 3;
-}
-
-/* Splide */
-.modal__slider {
-  width: 100%;
-}
-
-.modal__slider .splide__slide {
-  text-align: center;
-}
-
-.modal__slider img {
-  display: block;
-  width: 100%;
-  height: 600px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  margin: 0 auto;
-}
-
-.modal__slider .title {
-  font-size: 1.25rem;
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.modal__slider .txt {
-  text-align: left;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #fff;
-  font-weight: bold;
-  margin-top: 40px;
-}
-
-.modal__slider .splide__arrow svg {
-  fill: #fff;
-}
-
-/* 矢印 */
-.splide__arrow svg {
-  display: none;
-}
-
-.splide__arrow--prev {
-  background: url("../img/howto/arrow_white_left.svg") center/contain no-repeat;
-  top: 45%;
-}
-
-.splide__arrow--next {
-  background: url("../img/howto/arrow_white_right.svg") center/contain no-repeat;
-  top: 45%;
+@media (max-width: 600px) {
+  .howto_contents .contents_bg_m .howto_make .howto_list .list_detail .modal-trigger {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
 }
 
 /* -------- howto_calendar -------- */
