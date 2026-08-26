@@ -42,6 +42,8 @@
 	<link href="assets/css/swiper.min.css" rel="stylesheet" type="text/css">
 	<!-- Splide -->
 	<link href="assets/css/splide.min.css" rel="stylesheet" type="text/css">
+	<!-- modal styles -->
+	<link href="assets/css/howto_modal.css" rel="stylesheet">
 	<!-- Custom styles -->
 	<link href="assets/css/style.css?" rel="stylesheet">
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -96,139 +98,157 @@
   <!-- Main -->
   <main>
     <section class="howto_contents">
-      <div class="howto_box">
-        <div class="inner">
-          <h1 class="howto_title">かんたん！名刺作成ステップ</h1>
-          <div class="howto_slider">
-            <section class="splide page-slider" aria-label="かんたん！名刺作成ステップ">
-              <div class="splide__track">
-                  <ul class="splide__list">
-                    <li class="splide__slide">
-                      <img src="assets/img/howto/step_01.svg" alt="">
-                      <p>名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
-                    </li>
-                    <li class="splide__slide">
-                      <img src="assets/img/howto/step_01.svg" alt="">
-                      <p>名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
-                    </li>
-                    <li class="splide__slide">
-                      <img src="assets/img/howto/step_01.svg" alt="">
-                      <p>名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
-                    </li>
-                    <li class="splide__slide">
-                      <img src="assets/img/howto/step_01.svg" alt="">
-                      <p>名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
-                    </li>
-                    <li class="splide__slide">
-                      <img src="assets/img/howto/step_01.svg" alt="">
-                      <p>名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
-                    </li>
-                  </ul>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-
-	  <div class="howto_make">
-		<h1 class="howto_title question">名刺の作成について</h1>
-		<div class="howto_list">
-			<!-- list -->
-			<div class="list_detail">
-				<p class="modal-trigger" data-modal="modal01">名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
-			</div>
-			<div class="list_detail">
-				<p class="modal-trigger" data-modal="modal02">名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
-			</div>
-			<div class="list_detail">
-				<p class="modal-trigger" data-modal="modal03">名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+		<div class="contents_bg">
+			<div class="slider-area">
+				<h2 class="howto_title">かんたん！名刺作成ステップ</h2>
+				<button type="button" class="slider-arrow slider-arrow--prev" aria-label="前のスライド"></button>
+				<section id="step-slider" class="splide" aria-label="ステップ一覧">
+					<div class="splide__track">
+						<ul class="splide__list">
+							<li class="splide__slide">
+								<div class="step-card">
+									<div class="step-image blue">
+										<img src="assets/img/howto/step_01.svg" alt="">
+									</div>
+									<p class="step-text">名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
+								</div>
+							</li>
+							<li class="splide__slide">
+								<div class="step-card">
+									<div class="step-image green">
+										<img src="assets/img/howto/step_01.svg" alt="">
+									</div>
+									<p class="step-text">名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
+								</div>
+							</li>
+							<li class="splide__slide">
+								<div class="step-card">
+									<div class="step-image yellow">
+										<img src="assets/img/howto/step_01.svg" alt="">
+									</div>
+									<p class="step-text">名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<button type="button" class="slider-arrow slider-arrow--next" aria-label="次のスライド"></button>
 			</div>
 		</div>
-	  </div>
+		
+		<div class="contents_bg_m">
+			<div class="howto_make">
+				<h2 class="howto_title question">名刺の作成について</h1>
+				<div class="howto_list">
+					<!-- list -->
+					<div class="list_detail">
+						<p class="modal-trigger" data-modal="modal01">名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+					</div>
+					<div class="list_detail">
+						<p class="modal-trigger" data-modal="modal02">名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+					</div>
+					<div class="list_detail">
+						<p class="modal-trigger" data-modal="modal03">名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+					</div>
+				</div>
+			</div>
+		</div>
     </section>
 	</main>
 
 	<!-- modal01 -->
 	<div class="modal" id="modal01">
 	<div class="modal__overlay"></div>
+	<button class="modal__close" type="button"></button>
 		<div class="modal__content">
-			<button class="modal__close" type="button">×</button>
+			<div class="modal-slider-wrap">
+				<button class="modal__arrow modal__arrow--prev" type="button" aria-label="前へ"></button>
 				<div class="splide modal__slider">
 					<div class="splide__track">
 						<ul class="splide__list">
 						<li class="splide__slide">
-							<p class="title">タイトルタイトルタイトル</p>
+							<p class="title">モーダル①</p>
 							<img src="assets/img/howto/sample_01.jpg" alt="">
 							<p class="txt">1.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
 						</li>
 						<li class="splide__slide">
-							<p class="title">タイトルタイトルタイトル</p>
+							<p class="title">モーダル①</p>
 							<img src="assets/img/howto/sample_02.jpg" alt="">
 							<p class="txt">2.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
 						</li>
 						<li class="splide__slide">
-							<p class="title">タイトルタイトルタイトル</p>
+							<p class="title">モーダル①</p>
 							<img src="assets/img/howto/sample_03.jpg" alt="">
 							<p class="txt">3.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
 						</li>
 						</ul>
 					</div>
 				</div>
+				<button class="modal__arrow modal__arrow--next" type="button" aria-label="次へ"></button>
+			</div>
 		</div>
 	</div>
 	<!-- modal02 -->
 	<div class="modal" id="modal02">
-		<div class="modal__overlay"></div>
+	<div class="modal__overlay"></div>
+	<button class="modal__close" type="button"></button>
 		<div class="modal__content">
-			<button class="modal__close" type="button">×</button>
-			<div class="splide modal__slider">
-				<div class="splide__track">
-					<ul class="splide__list">
-					<li class="splide__slide">
-						<p class="title">タイトルタイトルタイトル</p>
-						<img src="assets/img/howto/sample_04.jpg" alt="">
-						<p class="txt">モーダル② スライド1</p>
-					</li>
-					<li class="splide__slide">
-						<p class="title">タイトルタイトルタイトル</p>
-						<img src="assets/img/howto/sample_05.jpg" alt="">
-						<p class="txt">モーダル② スライド2</p>
-					</li>
-					<li class="splide__slide">
-						<p class="title">タイトルタイトルタイトル</p>
-						<img src="assets/img/howto/sample_06.jpg" alt="">
-						<p class="txt">モーダル② スライド3</p>
-					</li>
-					</ul>
+			<div class="modal-slider-wrap">
+				<button class="modal__arrow modal__arrow--prev" type="button" aria-label="前へ"></button>
+				<div class="splide modal__slider">
+					<div class="splide__track">
+						<ul class="splide__list">
+						<li class="splide__slide">
+							<p class="title">モーダル②</p>
+							<img src="assets/img/howto/sample_01.jpg" alt="">
+							<p class="txt">1.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+						</li>
+						<li class="splide__slide">
+							<p class="title">モーダル②</p>
+							<img src="assets/img/howto/sample_02.jpg" alt="">
+							<p class="txt">2.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+						</li>
+						<li class="splide__slide">
+							<p class="title">モーダル②</p>
+							<img src="assets/img/howto/sample_03.jpg" alt="">
+							<p class="txt">3.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+						</li>
+						</ul>
+					</div>
 				</div>
+				<button class="modal__arrow modal__arrow--next" type="button" aria-label="次へ"></button>
 			</div>
 		</div>
 	</div>
 	<!-- modal03 -->
 	<div class="modal" id="modal03">
 	<div class="modal__overlay"></div>
+	<button class="modal__close" type="button"></button>
 		<div class="modal__content">
-			<button class="modal__close" type="button">×</button>
-			<div class="splide modal-slider modal__slider">
-				<div class="splide__track">
-					<ul class="splide__list">
-					<li class="splide__slide">
-						<p class="title">タイトルタイトルタイトル</p>
-						<div class="img_box"><img src="assets/img/howto/sample_01.jpg" alt=""></div>
-						<p class="txt">a.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
-					</li>
-					<li class="splide__slide">
-						<p class="title">タイトルタイトルタイトル</p>
-						<div class="img_box"><img src="assets/img/howto/sample_02.jpg" alt=""></div>
-						<p class="txt">b.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
-					</li>
-					<li class="splide__slide">
-						<p class="title">タイトルタイトルタイトル</p>
-						<div class="img_box"><img src="assets/img/howto/sample_03.jpg" alt=""></div>
-						<p class="txt">c.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
-					</li>
-					</ul>
+			<div class="modal-slider-wrap">
+				<button class="modal__arrow modal__arrow--prev" type="button" aria-label="前へ"></button>
+				<div class="splide modal__slider">
+					<div class="splide__track">
+						<ul class="splide__list">
+						<li class="splide__slide">
+							<p class="title">モーダル③</p>
+							<img src="assets/img/howto/sample_01.jpg" alt="">
+							<p class="txt">1.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+						</li>
+						<li class="splide__slide">
+							<p class="title">モーダル③</p>
+							<img src="assets/img/howto/sample_02.jpg" alt="">
+							<p class="txt">2.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+						</li>
+						<li class="splide__slide">
+							<p class="title">モーダル③</p>
+							<img src="assets/img/howto/sample_03.jpg" alt="">
+							<p class="txt">3.名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。名刺ガイド作成のついての説明文が入ります。</p>
+						</li>
+						</ul>
+					</div>
 				</div>
+				<button class="modal__arrow modal__arrow--next" type="button" aria-label="次へ"></button>
 			</div>
 		</div>
 	</div>
@@ -324,81 +344,192 @@
 
 	<!-- top slider -->
 	<script>
-	new Splide(".page-slider", {
-	type: "loop",
-	perPage: 2.5,
-	perMove: 1,
-	gap: "5%",
-	pagination: false,
-	}).mount();
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+        const splide = new Splide(
+          "#step-slider",
+          {
+            /* ループ */
+            type: "loop",
+            /* カード幅 */
+            fixedWidth: "var(--card-width)",
+            /* gap */
+            gap: "var(--card-gap)",
+            /* 2枚表示 */
+            perPage: 2,
+            /* 1枚ずつ移動 */
+            perMove: 1,
+            /* 1枚目から開始 */
+            start: 0,
+            /* 左端を基準 */
+            focus: 0,
+            /* 余白自動調整なし */
+            trimSpace: false,
+            /* paddingなし */
+            padding: 0,
+            /* ページネーションなし */
+            pagination: false,
+            /* Splide標準矢印OFF */
+            arrows: false,
+            /* ドラッグ可能 */
+            drag: true,
+            /* アニメーション速度 */
+            speed: 600
+          }
+        );
+        /* Splide起動 */
+        splide.mount();
+        /* 左矢印 */
+        document
+          .querySelector(".slider-arrow--prev")
+          .addEventListener(
+            "click",
+            function () {
+              splide.go("<");
+            }
+          );
+        /*  右矢印 */
+        document
+          .querySelector(".slider-arrow--next")
+          .addEventListener(
+            "click",
+            function () {
+
+              splide.go(">");
+
+            }
+          );
+      }
+    );
 	</script>
 
 	<!-- modal slider -->
 	<script>
 	document.addEventListener('DOMContentLoaded', function () {
-	// モーダルごとのSplideを保存
-	const sliders = {};
-	// すべてのモーダルを取得
-	const modals = document.querySelectorAll('.modal');
-	// モーダルごとにSplideを初期化
-	modals.forEach(function (modal) {
-    const sliderElement = modal.querySelector('.modal__slider');
-    if (sliderElement) {
-      const splide = new Splide(sliderElement, {
-        type: 'loop',
-        perPage: 1,
-        perMove: 1,
-        gap: '30px',
-        arrows: true,
-        pagination: false,
-      });
-      splide.mount();
-      sliders[modal.id] = splide;
+  // モーダルごとのSplideを保存
+  const sliders = {};
+  // すべてのモーダルを取得
+  const modals = document.querySelectorAll('.modal');
+  // モーダルごとにSplideを初期化
+  modals.forEach(function (modal) {
+    const sliderElement =
+      modal.querySelector('.modal__slider');
+	if (!sliderElement) {
+	return;
+	}
+    const splide = new Splide(sliderElement, {
+      type: 'loop',
+      perPage: 1,
+      perMove: 1,
+      gap: '30px',
+      arrows: false,
+      pagination: false
+    });
+    splide.mount();
+    // モーダルIDとSplideを紐付け
+    sliders[modal.id] = splide;
+    // 独自の左矢印
+    const prevButton =
+      modal.querySelector('.modal__arrow--prev');
+    if (prevButton) {
+      prevButton.addEventListener(
+        'click',
+        function () {
+          splide.go('<');
+        }
+      );
     }
-  	});
-  	// モーダルを開く
-  	const triggers = document.querySelectorAll('.modal-trigger');
-  	triggers.forEach(function (trigger) {
-    trigger.addEventListener('click', function () {
-      const modalId = trigger.dataset.modal;
-      const modal = document.getElementById(modalId);
-      if (!modal) return;
-      modal.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-      // モーダルを開いたときにSplideを更新
-      if (sliders[modalId]) {
-        sliders[modalId].refresh();
+    // 独自の右矢印
+    const nextButton =
+      modal.querySelector('.modal__arrow--next');
+    if (nextButton) {
+      nextButton.addEventListener(
+        'click',
+        function () {
+          splide.go('>');
+        }
+      );
+    }
+  });
+  // モーダルを開く
+	const triggers =
+	document.querySelectorAll('.modal-trigger');
+	triggers.forEach(function (trigger) {
+    trigger.addEventListener(
+      'click',
+      function () {
+        const modalId =
+          trigger.dataset.modal;
+        const modal =
+          document.getElementById(modalId);
+        if (!modal) {
+          return;
+        }
+        // モーダルを表示
+        modal.classList.add('is-open');
+        // 背景ページのスクロールを停止
+        document.body.style.overflow = 'hidden';
+        // Splideを更新
+        if (sliders[modalId]) {
+          sliders[modalId].refresh();
+        }
       }
-    });
- 	});
-	// 閉じるボタン
-	const closeButtons = document.querySelectorAll('.modal__close');
-	closeButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
-      const modal = button.closest('.modal');
-      modal.classList.remove('is-open');
+    );
+  });
+  // 閉じるボタン
+  const closeButtons =
+    document.querySelectorAll('.modal__close');
+  closeButtons.forEach(function (button) {
+    button.addEventListener(
+      'click',
+      function () {
+        const modal =
+          button.closest('.modal');
+        if (!modal) {
+          return;
+        }
+        modal.classList.remove('is-open');
+        // ページのスクロールを復活
+        document.body.style.overflow = '';
+      }
+    );
+  });
+  // 背景クリックで閉じる
+  const overlays =
+    document.querySelectorAll('.modal__overlay');
+  overlays.forEach(function (overlay) {
+    overlay.addEventListener(
+      'click',
+      function () {
+        const modal =
+          overlay.closest('.modal');
+        if (!modal) {
+          return;
+        }
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    );
+  });
+  // ESCキーで閉じる
+  document.addEventListener(
+    'keydown',
+    function (event) {
+      if (event.key !== 'Escape') {
+        return;
+      }
+      const openModal =
+        document.querySelector('.modal.is-open');
+      if (!openModal) {
+        return;
+      }
+      openModal.classList.remove('is-open');
       document.body.style.overflow = '';
-    });
-  	});
-  	// 背景をクリックして閉じる
-  	const overlays = document.querySelectorAll('.modal__overlay');
-  	overlays.forEach(function (overlay) {
-    overlay.addEventListener('click', function () {
-      const modal = overlay.closest('.modal');
-      modal.classList.remove('is-open');
-      document.body.style.overflow = '';
-    });
-  	});
-	// ESCキーで閉じる
-	document.addEventListener('keydown', function (event) {
-    if (event.key !== 'Escape') return;
-    const openModal = document.querySelector('.modal.is-open');
-    if (!openModal) return;
-    openModal.classList.remove('is-open');
-    document.body.style.overflow = '';
-  	});
-	});
-	</script>
+    }
+  );
+});
+</script>
 
 </body>
 
