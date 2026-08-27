@@ -64,13 +64,12 @@
 }
 .modal__slider .splide__slide {
 	text-align: center;
-	aspect-ratio: 1 / 1;
+	/* aspect-ratio: 1 / 1; */
 }
 .modal__slider img {
 	display: block;
 	width: 100%;
-	/* height: 600px; */
-	height: 100%;
+	height: 1040px;
 	object-fit: contain;
 	margin: 0 auto;
 }
@@ -117,6 +116,17 @@
 	background: url("../img/howto/arrow_white_right.svg") center / contain no-repeat;
 	right:0;
 }
+@media (max-width: 1100px) and (min-width: 601px) {
+	.modal__slider img {
+		width: 100%;
+		height: 95vw;
+		object-fit: contain;
+	}
+	.modal__arrow {
+		/* 95vwの画像の中央 */
+		top: calc(140px + 47.5vw);
+	}
+}
 @media (max-width: 600px) {
 .modal {
 	align-items: flex-start;
@@ -143,8 +153,11 @@
 }
 .modal__slider img {
 	width: 100%;
-	height: 100%;
+	height: calc((100vw - 60px) * 1.5);
 	object-fit: contain;
+}
+.modal__arrow {
+	top: calc(60px + (100vw - 60px) * 1.5 / 2);
 }
 .modal__arrow--prev {
 	left: 0;
