@@ -4203,6 +4203,11 @@ footer .ft .ftImg {
   .howto_contents .howto_title::before {
     width: 20px;
     height: 20px;
+    top: 0.6rem;
+  }
+}
+@media (max-width: 400px) {
+  .howto_contents .howto_title::before {
     top: 0.3rem;
   }
 }
@@ -4243,6 +4248,11 @@ footer .ft .ftImg {
   .howto_contents .howto_title.question::before {
     width: 20px;
     height: 20px;
+    top: 0.4rem;
+  }
+}
+@media (max-width: 400px) {
+  .howto_contents .howto_title.question::before {
     top: 0.2rem;
   }
 }
