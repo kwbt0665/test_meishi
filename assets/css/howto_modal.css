@@ -157,7 +157,7 @@
 	object-fit: contain;
 }
 .modal__arrow {
-	top: calc(60px + (100vw - 60px) * 1.5 / 2);
+	top: calc(80px + (100vw - 60px) * 1.5 / 2);
 }
 .modal__arrow--prev {
 	left: 0;
