@@ -748,7 +748,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		/*
 		 * 縦方向の操作なら無視
 		 */
-		if (Math.abs(diffX) <= Math.abs(diffY)) {
+		if (Math.abs(diffX) < Math.abs(diffY) * 0.7) {
 			return;
 		}
 
@@ -756,7 +756,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		/*
 		 * 小さな動きはクリックとして扱う
 		 */
-		if (Math.abs(diffX) < 50) {
+		if (Math.abs(diffX) < 20) {
 			return;
 		}
 
