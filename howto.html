@@ -110,23 +110,23 @@
 									<div class="step-image blue">
 										<img src="assets/img/howto/step_01.svg" alt="">
 									</div>
-									<p class="step-text">名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
+									<p class="step-text">マイプロフィールデータを作る</p>
 								</div>
 							</li>
 							<li class="splide__slide">
 								<div class="step-card">
-									<div class="step-image green">
-										<img src="assets/img/howto/step_01.svg" alt="">
+									<div class="step-image blue">
+										<img src="assets/img/howto/step_02.svg" alt="">
 									</div>
-									<p class="step-text">名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
+									<p class="step-text">テンプレートを選ぶ</p>
 								</div>
 							</li>
 							<li class="splide__slide">
 								<div class="step-card">
-									<div class="step-image yellow">
-										<img src="assets/img/howto/step_01.svg" alt="">
+									<div class="step-image blue">
+										<img src="assets/img/howto/step_03.svg" alt="">
 									</div>
-									<p class="step-text">名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。名刺ステップの説明文が入ります。</p>
+									<p class="step-text">印刷して カッターナイフなどでカット</p>
 								</div>
 							</li>
 						</ul>
@@ -559,65 +559,266 @@
 
 	<!-- top slider -->
 	<script>
-    document.addEventListener(
-      "DOMContentLoaded",
-      function () {
-        const splide = new Splide(
-          "#step-slider",
-          {
-            /* ループ */
-            type: "loop",
-            /* カード幅 */
-            fixedWidth: "var(--card-width)",
-            /* gap */
-            gap: "var(--card-gap)",
-            /* 2枚表示 */
-            perPage: 2,
-            /* 1枚ずつ移動 */
-            perMove: 1,
-            /* 1枚目から開始 */
-            start: 0,
-            /* 左端を基準 */
-            focus: 0,
-            /* 余白自動調整なし */
-            trimSpace: false,
-            /* paddingなし */
-            padding: 0,
-            /* ページネーションなし */
-            pagination: false,
-            /* Splide標準矢印OFF */
-            arrows: false,
-            /* ドラッグ可能 */
-            drag: true,
-            /* アニメーション速度 */
-            speed: 600
-          }
-        );
-        /* Splide起動 */
-        splide.mount();
-        /* 左矢印 */
-        document
-          .querySelector(".slider-arrow--prev")
-          .addEventListener(
-            "click",
-            function () {
-              splide.go("<");
-            }
-          );
-        /*  右矢印 */
-        document
-          .querySelector(".slider-arrow--next")
-          .addEventListener(
-            "click",
-            function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-              splide.go(">");
+	const prevButton = document.querySelector(".slider-arrow--prev");
+	const nextButton = document.querySelector(".slider-arrow--next");
+	const sliderElement = document.querySelector("#step-slider");
 
-            }
-          );
-      }
-    );
-	</script>
+	const splide = new Splide("#step-slider", {
+
+		/* ループなし */
+		type: "slide",
+
+		/* カード幅 */
+		fixedWidth: "var(--card-width)",
+
+		/* カード間 */
+		gap: "var(--card-gap)",
+
+		/* 2枚表示 */
+		perPage: 2,
+
+		/* 1枚ずつ */
+		perMove: 1,
+
+		/* 初期位置 */
+		start: 0,
+
+		/* 左端基準 */
+		focus: 0,
+
+		/* 余白調整なし */
+		trimSpace: false,
+
+		padding: 0,
+
+		pagination: false,
+
+		/* Splide標準矢印OFF */
+		arrows: false,
+
+		/*
+		 * 重要
+		 * Splide自身のドラッグをOFF
+		 */
+		drag: false,
+
+		speed: 600
+	});
+
+
+	/* ========================================
+	   位置
+	======================================== */
+
+	const FIRST_INDEX = 0;
+	const LAST_INDEX = 1;
+
+
+	/* ========================================
+	   矢印状態
+	======================================== */
+
+	function updateArrows() {
+
+		/* 左矢印 */
+
+		if (splide.index <= FIRST_INDEX) {
+
+			prevButton.classList.add("is-disabled");
+
+		} else {
+
+			prevButton.classList.remove("is-disabled");
+
+		}
+
+
+		/* 右矢印 */
+
+		if (splide.index >= LAST_INDEX) {
+
+			nextButton.classList.add("is-disabled");
+
+		} else {
+
+			nextButton.classList.remove("is-disabled");
+
+		}
+
+	}
+
+
+	/* ========================================
+	   Splide起動
+	======================================== */
+
+	splide.mount();
+
+	updateArrows();
+
+
+	/* ========================================
+	   左矢印
+	======================================== */
+
+	prevButton.addEventListener("click", function () {
+
+		if (splide.index <= FIRST_INDEX) {
+			return;
+		}
+
+		splide.go(FIRST_INDEX);
+
+	});
+
+
+	/* ========================================
+	   右矢印
+	======================================== */
+
+	nextButton.addEventListener("click", function () {
+
+		if (splide.index >= LAST_INDEX) {
+			return;
+		}
+
+		splide.go(LAST_INDEX);
+
+	});
+
+
+	/* ========================================
+	   スライド完了
+	======================================== */
+
+	splide.on("moved", function () {
+
+		updateArrows();
+
+	});
+
+
+	/* ========================================
+	   自前ドラッグ・スワイプ
+	======================================== */
+
+	let startX = 0;
+	let startY = 0;
+	let isDragging = false;
+
+
+	/*
+	 * ドラッグ開始
+	 */
+	sliderElement.addEventListener("pointerdown", function (event) {
+
+		/*
+		 * 左クリック以外は無視
+		 */
+		if (event.pointerType === "mouse" && event.button !== 0) {
+			return;
+		}
+
+		startX = event.clientX;
+		startY = event.clientY;
+
+		isDragging = true;
+
+	});
+
+
+	/*
+	 * ドラッグ終了
+	 */
+	sliderElement.addEventListener("pointerup", function (event) {
+
+		if (!isDragging) {
+			return;
+		}
+
+		isDragging = false;
+
+
+		const diffX = event.clientX - startX;
+		const diffY = event.clientY - startY;
+
+
+		/*
+		 * 縦方向の操作なら無視
+		 */
+		if (Math.abs(diffX) <= Math.abs(diffY)) {
+			return;
+		}
+
+
+		/*
+		 * 小さな動きはクリックとして扱う
+		 */
+		if (Math.abs(diffX) < 50) {
+			return;
+		}
+
+
+		/*
+		 * ====================================
+		 * 左へスワイプ
+		 * ====================================
+		 *
+		 * → 次の位置へ
+		 *
+		 * ① ② ③
+		 * ↓
+		 *   ① ② ③
+		 *
+		 */
+
+		if (diffX < 0) {
+
+			if (splide.index < LAST_INDEX) {
+
+				splide.go(LAST_INDEX);
+
+			}
+
+			return;
+		}
+
+
+		/*
+		 * ====================================
+		 * 右へスワイプ
+		 * ====================================
+		 *
+		 * → 前の位置へ
+		 */
+
+		if (diffX > 0) {
+
+			if (splide.index > FIRST_INDEX) {
+
+				splide.go(FIRST_INDEX);
+
+			}
+
+		}
+
+	});
+
+
+	/*
+	 * pointercancel
+	 */
+	sliderElement.addEventListener("pointercancel", function () {
+
+		isDragging = false;
+
+	});
+
+
+});
+</script>
 
 	<!-- modal slider -->
 	<script>
