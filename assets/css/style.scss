@@ -3877,6 +3877,8 @@ footer{
 				--card-gap: 60px;
 				/* 3枚目の見切れ幅 */
 				--peek-width: 80px;
+				/* スライド後に1枚目を残す幅 */
+				--left-peek: 80px;
 				position: relative;
 				/*1・2枚目を中央に配置*/
 				margin-left: calc(50% - var(--card-width) - (var(--card-gap) / 2));
@@ -3917,15 +3919,36 @@ footer{
 					--card-width: calc((100vw - 20px - 20px - var(--peek-width)) / 2);
 				}
 				#step-slider {
-					width: 100%;
-					overflow: hidden;
-					.splide__track {
-					overflow: visible;
-					}
-					.splide__slide {
-					width: var(--card-width) !important;
-					}
-				}
+	width: calc(100% + var(--left-peek));
+	margin-left: 0;
+	overflow: visible;
+
+	/* ドラッグ時の文字選択を禁止 */
+	user-select: none;
+	-webkit-user-select: none;
+
+	.splide__track {
+		overflow: visible;
+	}
+
+	.splide__list {
+		overflow: visible;
+		padding-left: var(--left-peek);
+	}
+
+	.splide__slide {
+		width: var(--card-width) !important;
+		flex: 0 0 var(--card-width);
+	}
+
+	/* 画像の選択・ドラッグを禁止 */
+	img {
+		user-select: none;
+		-webkit-user-select: none;
+		-webkit-user-drag: none;
+		pointer-events: none;
+	}
+}
 				.step-card{
 					width: var(--card-width);
 					.step-image{
@@ -3945,23 +3968,23 @@ footer{
 						&.blue{
 							background: #4058a5;
 						}
-						&.green{
-							background: #4cab43;
-						}
-						&.yellow{
-							background: #f6d13c;
-						}
+						// &.green{
+						// 	background: #4cab43;
+						// }
+						// &.yellow{
+						// 	background: #f6d13c;
+						// }
 						img {
-							width: 36%;
-							height: 36%;
+							width: 90%;
+							height: 90%;
 							object-fit: contain;
 						}
 					}
 					.step-text {
 						margin: 31px 0 0;
-						font-size: 1rem;
+						font-size: 1.5rem;
 						line-height: 1.8;
-						font-weight: 500;
+						font-weight: 600;
 						color: #333;
 						@media (max-width: 600px) {
 							margin-top: 18px;
@@ -3989,6 +4012,10 @@ footer{
 					cursor: pointer;
 					@media (max-width: 1200px) {
 							display: none;
+					}
+					&.is-disabled {
+						opacity: 0.5;
+						cursor: default;
 					}
 					&::before{
 						content: "";
@@ -4041,10 +4068,10 @@ footer{
 						}
 					}
 				}
-				.slider-arrow:hover::before,
-				.slider-arrow:hover::after {
-					background: #91a0cc;
-				}
+				// .slider-arrow:hover::before,
+				// .slider-arrow:hover::after {
+				// 	background: #91a0cc;
+				// }
 			}
 	}
 	.contents_bg_m{
