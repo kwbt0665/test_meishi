@@ -4148,11 +4148,6 @@ footer .ft .ftImg {
 }
 
 /* -------- howto -------- */
-@media (max-width: 600px) {
-  .howto_contents {
-    background-color: #F5F5F5;
-  }
-}
 .howto_contents .howto_title {
   position: relative;
   font-size: 2.5rem;
@@ -4213,17 +4208,12 @@ footer .ft .ftImg {
 }
 .howto_contents .howto_title.question {
   padding-left: 70px;
-  margin: 0 0 60px 0;
-}
-@media (max-width: 1200px) {
-  .howto_contents .howto_title.question {
-    margin: 0 0 40px 0;
-  }
+  margin: 0;
 }
 @media (max-width: 600px) {
   .howto_contents .howto_title.question {
     padding-left: 30px;
-    margin: 0 0 20px 30px;
+    margin: 40px 0 0 30px;
   }
 }
 .howto_contents .howto_title.question::before {
@@ -4256,6 +4246,29 @@ footer .ft .ftImg {
     top: 0.2rem;
   }
 }
+.howto_contents .howto_sub_title {
+  font-size: 1.5rem;
+  color: #374E9C;
+  border-left: 6px solid #374E9C;
+  padding-left: 20px;
+  margin: 60px 0 30px 0;
+  font-weight: 600;
+}
+@media (max-width: 1200px) {
+  .howto_contents .howto_sub_title {
+    font-size: 1.25rem;
+    margin: 50px 0 30px 0;
+  }
+}
+@media (max-width: 600px) {
+  .howto_contents .howto_sub_title {
+    font-size: 0.875rem;
+    line-height: 1;
+    margin: 35px 0 20px 30px;
+    border-left: 3px solid #374E9C;
+    padding-left: 10px;
+  }
+}
 .howto_contents .contents_bg {
   overflow-x: hidden;
   background-color: #F5F5F5;
@@ -4268,7 +4281,7 @@ footer .ft .ftImg {
 }
 @media (max-width: 600px) {
   .howto_contents .contents_bg {
-    padding: 0 0 60px 10px;
+    padding: 0 0 40px 10px;
   }
 }
 .howto_contents .contents_bg .slider-area {
@@ -4506,7 +4519,7 @@ footer .ft .ftImg {
 }
 @media (max-width: 600px) {
   .howto_contents .contents_bg_m {
-    padding: 0;
+    padding: 0 0 60px 0;
   }
 }
 .howto_contents .contents_bg_m .howto_make {
@@ -4521,6 +4534,7 @@ footer .ft .ftImg {
 @media (max-width: 600px) {
   .howto_contents .contents_bg_m .howto_make .howto_list {
     border: none;
+    border-bottom: #D9D9D9 solid 1px;
   }
 }
 .howto_contents .contents_bg_m .howto_make .howto_list .list_detail {

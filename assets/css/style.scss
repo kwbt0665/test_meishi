@@ -3776,9 +3776,6 @@ footer{
 /* -------- howto -------- */
 
 .howto_contents{
-	@media (max-width: 600px) {
-			background-color: #F5F5F5;
-		}
 	.howto_title {
 			position: relative;
 			font-size: 2.5rem;
@@ -3826,13 +3823,10 @@ footer{
 			}
 			&.question{
 				padding-left: 70px;
-				margin: 0 0 60px 0;
-				@media (max-width: 1200px) {
-					margin: 0 0 40px 0;
-				}
+				margin: 0 ;
 				@media (max-width: 600px) {
 					padding-left: 30px;
-					margin: 0 0 20px 30px;
+					margin: 40px 0 0 30px;
 				}
 			&::before{
 				position: absolute;
@@ -3860,6 +3854,25 @@ footer{
 			}
 			}
 		}
+		.howto_sub_title {
+			font-size: 1.5rem;
+			color: #374E9C;
+			border-left: 6px solid #374E9C;
+			padding-left: 20px;
+			margin: 60px 0 30px 0;
+			font-weight: 600;
+			@media (max-width: 1200px) {
+				font-size: 1.25rem;
+				margin: 50px 0 30px 0;
+			}
+			@media (max-width: 600px) {
+				font-size: 0.875rem;
+				line-height: 1;
+				margin: 35px 0 20px 30px;
+				border-left: 3px solid #374E9C;
+				padding-left: 10px;
+			}
+		}
 	.contents_bg{
 		overflow-x: hidden;
 		background-color: #F5F5F5;
@@ -3868,7 +3881,7 @@ footer{
 			padding-bottom: 80px;
 		}
 		@media (max-width: 600px) {
-			padding: 0 0 60px 10px;
+			padding: 0 0 40px 10px;
 		}
 		.slider-area {
 				/* PC時のカード幅最大500px*/
@@ -4085,7 +4098,7 @@ footer{
 						padding: 80px 30px;
 					}
 			@media (max-width: 600px) {
-				padding: 0;
+				padding: 0 0 60px 0;
 			}
 		.howto_make{
 			max-width: 1040px;
@@ -4096,6 +4109,7 @@ footer{
 				background-color: #fff;
 				@media (max-width: 600px) {
 							border: none;
+							border-bottom: #D9D9D9 solid 1px;
 						}
 				.list_detail{
 					padding: 30px 300px 30px 30px; 

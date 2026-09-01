@@ -54,7 +54,7 @@
 	color: #fff;
 	z-index: 30;
 	@media (max-width: 600px) {
-		top: calc(5vh + 20px);
+		top: calc(5vh);
 		right: calc(2.5vw + 20px);
 		background-size: 18px;
 	}
