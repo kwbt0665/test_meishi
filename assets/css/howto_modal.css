@@ -54,8 +54,8 @@
 	color: #fff;
 	z-index: 30;
 	@media (max-width: 600px) {
-		top: calc(5vh - 35px);
-		right: calc(2.5vw - 10px);
+		top: calc(5vh + 20px);
+		right: calc(2.5vw + 20px);
 		background-size: 18px;
 	}
 }
