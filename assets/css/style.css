@@ -4252,6 +4252,7 @@ footer .ft .ftImg {
   border-left: 6px solid #374E9C;
   padding-left: 20px;
   margin: 60px 0 30px 0;
+  line-height: 1;
   font-weight: 600;
 }
 @media (max-width: 1200px) {
@@ -4263,7 +4264,6 @@ footer .ft .ftImg {
 @media (max-width: 600px) {
   .howto_contents .howto_sub_title {
     font-size: 0.875rem;
-    line-height: 1;
     margin: 35px 0 20px 30px;
     border-left: 3px solid #374E9C;
     padding-left: 10px;
