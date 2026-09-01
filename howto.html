@@ -727,314 +727,139 @@
 
 	<!-- top slider -->
 	<script>
-document.addEventListener("DOMContentLoaded", function () {
-
+	document.addEventListener("DOMContentLoaded", function () {
 	const prevButton = document.querySelector(".slider-arrow--prev");
 	const nextButton = document.querySelector(".slider-arrow--next");
 	const sliderElement = document.querySelector("#step-slider");
-
 	const splide = new Splide("#step-slider", {
-
-		/* ================================
-		   基本設定
-		================================ */
-
 		/* ループなし */
 		type: "slide",
-
 		/* カード幅 */
 		fixedWidth: "var(--card-width)",
-
 		/* カード間 */
 		gap: "var(--card-gap)",
-
 		/* 2枚表示 */
 		perPage: 2,
-
 		/* 1枚ずつ移動 */
 		perMove: 1,
-
 		/* 初期位置 */
 		start: 0,
-
 		/* 左端基準 */
 		focus: 0,
-
 		/* 余白調整なし */
 		trimSpace: false,
-
 		padding: 0,
-
-		/* ページネーションなし */
-		pagination: false,
-
-		/* Splide標準矢印OFF */
 		arrows: false,
-
-		/* =================================
-		   Splide自身のドラッグはOFF
-		   ※これが今回の重要ポイント
-		================================= */
 		drag: false,
-
-		/* スライド速度 */
 		speed: 350,
-
-		/* リワインドなし */
 		rewind: false
 
 	});
-
-
-	/* ================================
-	   スライド位置
-	================================ */
-
+	/* スライド位置 */
 	const FIRST_INDEX = 0;
 	const LAST_INDEX = 1;
-
-
-	/* ================================
-	   矢印状態
-	================================ */
-
+	/* 矢印状態  */
 	function updateArrows() {
-
 		/* 左矢印 */
 		if (splide.index <= FIRST_INDEX) {
-
 			prevButton.classList.add("is-disabled");
-
 		} else {
-
 			prevButton.classList.remove("is-disabled");
-
 		}
-
-
 		/* 右矢印 */
 		if (splide.index >= LAST_INDEX) {
-
 			nextButton.classList.add("is-disabled");
-
 		} else {
-
 			nextButton.classList.remove("is-disabled");
-
 		}
-
 	}
-
-
-	/* ================================
-	   Splide起動
-	================================ */
-
+	/* Splide起動 */
 	splide.mount();
-
 	updateArrows();
-
-
-	/* ================================
-	   左矢印
-	================================ */
-
+	/* 左矢印 */
 	prevButton.addEventListener("click", function () {
-
 		if (splide.index <= FIRST_INDEX) {
 			return;
 		}
-
 		splide.go(FIRST_INDEX);
-
 	});
-
-
-	/* ================================
-	   右矢印
-	================================ */
-
+	/* 右矢印 */
 	nextButton.addEventListener("click", function () {
-
 		if (splide.index >= LAST_INDEX) {
 			return;
 		}
-
 		splide.go(LAST_INDEX);
-
 	});
-
-
-	/* ================================
-	   スライド完了
-	================================ */
-
+	/* スライド完了 */
 	splide.on("moved", function () {
-
 		updateArrows();
-
 	});
-
-
-	/* ================================
-	   自前スワイプ
-	================================ */
-
+	/* スワイプ */
 	let startX = 0;
 	let startY = 0;
 	let isPointerDown = false;
-
-	/*
-	 * スライダー上では
-	 * 横方向の操作を自前で処理し、
-	 * 縦方向のスクロールは通常通り許可
-	 */
 	sliderElement.style.touchAction = "pan-y";
-
-
-	/* ================================
-	   スワイプ開始
-	================================ */
-
+	/* スワイプ開始 */
 	sliderElement.addEventListener("pointerdown", function (event) {
-
-		/*
-		 * マウスの場合は左クリックのみ
-		 */
+		/*マウスの場合は左クリックのみ*/
 		if (
 			event.pointerType === "mouse" &&
 			event.button !== 0
 		) {
 			return;
 		}
-
 		startX = event.clientX;
 		startY = event.clientY;
-
 		isPointerDown = true;
-
-		/*
-		 * pointerupを確実に取得するため
-		 */
+		/*pointerupを確実に取得するため*/
 		sliderElement.setPointerCapture(event.pointerId);
-
 	});
-
-
-	/* ================================
-	   スワイプ終了
-	================================ */
-
+	/* スワイプ終了 */
 	sliderElement.addEventListener("pointerup", function (event) {
-
 		if (!isPointerDown) {
 			return;
 		}
-
 		isPointerDown = false;
-
-
 		const diffX = event.clientX - startX;
 		const diffY = event.clientY - startY;
-
-
-		/* ================================
-		   縦方向の操作は無視
-		================================ */
-
+		/* 縦方向の操作は無視 */
 		if (Math.abs(diffY) > Math.abs(diffX)) {
 			return;
 		}
-
-
-		/* ================================
-		   スワイプ判定距離
-		   30px程度で反応
-		================================ */
-
+		/* スワイプ判定距離 */
 		const SWIPE_THRESHOLD = 30;
-
 		if (Math.abs(diffX) < SWIPE_THRESHOLD) {
 			return;
 		}
-
-
-		/* ================================
-		   左へスワイプ
-		   → 次の位置へ
-		================================ */
-
+		/* 左へスワイプ → 次の位置へ */
 		if (diffX < 0) {
-
-			/*
-			 * すでに③まで来ていたら
-			 * 絶対に動かさない
-			 */
 			if (splide.index >= LAST_INDEX) {
 				return;
 			}
-
 			splide.go(LAST_INDEX);
-
 			return;
 		}
-
-
-		/* ================================
-		   右へスワイプ
-		   → 前の位置へ
-		================================ */
-
+		/* 右へスワイプ→ 前の位置へ */
 		if (diffX > 0) {
-
-			/*
-			 * ①まで来ていたら
-			 * 絶対に動かさない
-			 */
 			if (splide.index <= FIRST_INDEX) {
 				return;
 			}
-
 			splide.go(FIRST_INDEX);
-
 		}
-
 	});
-
-
-	/* ================================
-	   pointercancel
-	================================ */
-
+	/* pointercancel */
 	sliderElement.addEventListener("pointercancel", function () {
-
 		isPointerDown = false;
-
 	});
-
-
-	/* ================================
-	   pointerleave
-	================================ */
-
+	/* pointerleave */
 	sliderElement.addEventListener("pointerleave", function (event) {
-
-		/*
-		 * マウス操作時のみ、
-		 * ポインターが外れたら解除
-		 */
 		if (event.pointerType === "mouse") {
-
-			isPointerDown = false;
-
-		}
-
+				isPointerDown = false;
+			}
+		});
 	});
-
-});
-</script>
-
-
+	</script>
+	
 	<!-- modal slider -->
 	<script>
 	document.addEventListener('DOMContentLoaded', function () {
