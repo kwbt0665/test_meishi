@@ -559,391 +559,283 @@
 
 	<!-- top slider -->
 	<script>
-document.addEventListener("DOMContentLoaded", function () {
-
+	document.addEventListener("DOMContentLoaded", function () {
 	const prevButton = document.querySelector(".slider-arrow--prev");
 	const nextButton = document.querySelector(".slider-arrow--next");
 	const sliderElement = document.querySelector("#step-slider");
-
 	const splide = new Splide("#step-slider", {
-
 		/* ループなし */
 		type: "slide",
-
 		/* カード幅 */
 		fixedWidth: "var(--card-width)",
-
 		/* カード間 */
 		gap: "var(--card-gap)",
-
 		/* 2枚表示 */
 		perPage: 2,
-
 		/* 1枚ずつ */
 		perMove: 1,
-
 		/* 初期位置 */
 		start: 0,
-
 		/* 左端基準 */
 		focus: 0,
-
 		/* 余白調整なし */
 		trimSpace: false,
-
 		padding: 0,
-
 		pagination: false,
-
 		/* Splide標準矢印OFF */
 		arrows: false,
-
-		/*
-		 * 重要
-		 * Splide自身のドラッグをOFF
-		 */
+		/*Splide自身のドラッグをOFF*/
 		drag: false,
-
-		speed: 600
+		speed: 500
 	});
-
-
-	/* ========================================
-	   位置
-	======================================== */
-
+	/*位置 */
 	const FIRST_INDEX = 0;
 	const LAST_INDEX = 1;
-
-
-	/* ========================================
-	   矢印状態
-	======================================== */
-
+	/* 矢印状態 */
 	function updateArrows() {
-
 		/* 左矢印 */
-
 		if (splide.index <= FIRST_INDEX) {
-
 			prevButton.classList.add("is-disabled");
-
 		} else {
-
 			prevButton.classList.remove("is-disabled");
-
 		}
-
-
 		/* 右矢印 */
-
 		if (splide.index >= LAST_INDEX) {
-
 			nextButton.classList.add("is-disabled");
-
 		} else {
-
 			nextButton.classList.remove("is-disabled");
-
 		}
-
 	}
-
-
-	/* ========================================
-	   Splide起動
-	======================================== */
-
+	/*  Splide起動 */
 	splide.mount();
-
 	updateArrows();
-
-
-	/* ========================================
-	   左矢印
-	======================================== */
-
+	/* 左矢印 */
 	prevButton.addEventListener("click", function () {
-
 		if (splide.index <= FIRST_INDEX) {
 			return;
 		}
-
 		splide.go(FIRST_INDEX);
-
 	});
-
-
-	/* ========================================
-	   右矢印
-	======================================== */
-
+	/*  右矢印 */
 	nextButton.addEventListener("click", function () {
-
 		if (splide.index >= LAST_INDEX) {
 			return;
 		}
-
 		splide.go(LAST_INDEX);
-
 	});
-
-
-	/* ========================================
-	   スライド完了
-	======================================== */
-
+	/*  スライド完了 */
 	splide.on("moved", function () {
-
 		updateArrows();
-
 	});
-
-
-	/* ========================================
-	   自前ドラッグ・スワイプ
-	======================================== */
-
+	/*  自前ドラッグ・スワイプ */
 	let startX = 0;
 	let startY = 0;
 	let isDragging = false;
-
-
-	/*
-	 * ドラッグ開始
-	 */
+	/* ドラッグ開始 */
 	sliderElement.addEventListener("pointerdown", function (event) {
-
-		/*
-		 * 左クリック以外は無視
-		 */
+		/* 左クリック以外は無視 */
 		if (event.pointerType === "mouse" && event.button !== 0) {
 			return;
 		}
-
 		startX = event.clientX;
 		startY = event.clientY;
-
 		isDragging = true;
-
 	});
-
-
-	/*
-	 * ドラッグ終了
-	 */
+	/* ドラッグ終了 */
 	sliderElement.addEventListener("pointerup", function (event) {
-
 		if (!isDragging) {
 			return;
 		}
-
 		isDragging = false;
-
-
 		const diffX = event.clientX - startX;
 		const diffY = event.clientY - startY;
-
-
-		/*
-		 * 縦方向の操作なら無視
-		 */
-		if (Math.abs(diffX) < Math.abs(diffY) * 0.7) {
+		/* 縦方向の操作なら無視 */
+		if (Math.abs(diffX) < Math.abs(diffY) * 0.6) {
 			return;
 		}
-
-
-		/*
-		 * 小さな動きはクリックとして扱う
-		 */
-		if (Math.abs(diffX) < 20) {
+		/* 小さな動きはクリックとして扱う */
+		if (Math.abs(diffX) < 15) {
 			return;
 		}
-
-
-		/*
-		 * ====================================
-		 * 左へスワイプ
-		 * ====================================
-		 *
-		 * → 次の位置へ
-		 *
-		 * ① ② ③
-		 * ↓
-		 *   ① ② ③
-		 *
-		 */
-
+		/* 左へスワイプ */
 		if (diffX < 0) {
-
 			if (splide.index < LAST_INDEX) {
-
 				splide.go(LAST_INDEX);
-
 			}
-
 			return;
 		}
-
-
-		/*
-		 * ====================================
-		 * 右へスワイプ
-		 * ====================================
-		 *
-		 * → 前の位置へ
-		 */
-
+		/* 右へスワイプ */
 		if (diffX > 0) {
-
 			if (splide.index > FIRST_INDEX) {
-
 				splide.go(FIRST_INDEX);
-
 			}
-
 		}
-
 	});
-
-
-	/*
-	 * pointercancel
-	 */
+	/* pointercancel */
 	sliderElement.addEventListener("pointercancel", function () {
-
 		isDragging = false;
-
 	});
-
-
-});
-</script>
+	});
+	</script>
 
 	<!-- modal slider -->
 	<script>
 	document.addEventListener('DOMContentLoaded', function () {
-  // モーダルごとのSplideを保存
-  const sliders = {};
-  // すべてのモーダルを取得
-  const modals = document.querySelectorAll('.modal');
-  // モーダルごとにSplideを初期化
-  modals.forEach(function (modal) {
-    const sliderElement =
-      modal.querySelector('.modal__slider');
-	if (!sliderElement) {
-	return;
-	}
-    const splide = new Splide(sliderElement, {
-      type: 'loop',
-      perPage: 1,
-      perMove: 1,
-      gap: '30px',
-      arrows: false,
-      pagination: false
-    });
-    splide.mount();
-    // モーダルIDとSplideを紐付け
-    sliders[modal.id] = splide;
-    // 独自の左矢印
-    const prevButton =
-      modal.querySelector('.modal__arrow--prev');
-    if (prevButton) {
-      prevButton.addEventListener(
-        'click',
-        function () {
-          splide.go('<');
-        }
-      );
-    }
-    // 独自の右矢印
-    const nextButton =
-      modal.querySelector('.modal__arrow--next');
-    if (nextButton) {
-      nextButton.addEventListener(
-        'click',
-        function () {
-          splide.go('>');
-        }
-      );
-    }
-  });
-  // モーダルを開く
+	/* モーダルごとのSplideを保存 */
+	const sliders = {};
+	/* すべてのモーダル */
+	const modals = document.querySelectorAll('.modal');
+	/*   モーダルごとにSplideを初期化 */
+	modals.forEach(function (modal) {
+		const sliderElement =
+			modal.querySelector('.modal__slider');
+		if (!sliderElement) {
+			return;
+		}
+		/* Splide */
+		const splide = new Splide(sliderElement, {
+			type: 'slide',
+			perPage: 1,
+			perMove: 1,
+			gap: '30px',
+			arrows: false,
+			pagination: false
+		});
+		/* 独自矢印 */
+		const prevButton =
+			modal.querySelector('.modal__arrow--prev');
+		const nextButton =
+			modal.querySelector('.modal__arrow--next');
+		/*  矢印の状態を更新 */
+		function updateArrows() {
+			/* 1枚目 */
+			if (splide.index === 0) {
+				prevButton.classList.add('is-disabled');
+			} else {
+				prevButton.classList.remove('is-disabled');
+			}
+			/* 最後のスライド */
+			if (splide.index === splide.length - 1) {
+				nextButton.classList.add('is-disabled');
+			} else {
+				nextButton.classList.remove('is-disabled');
+			}
+		}
+		/*  Splide起動 */
+		splide.mount();
+		/* 最初の矢印状態 */
+		updateArrows();
+		/* 左矢印 */
+		if (prevButton) {
+			prevButton.addEventListener(
+				'click',
+				function () {
+					/* 1枚目なら動かさない */
+					if (splide.index === 0) {
+						return;
+					}
+					splide.go('<');
+				}
+			);
+		}
+		/* 右矢印 */
+		if (nextButton) {
+			nextButton.addEventListener(
+				'click',
+				function () {
+					/* 最後なら動かさない */
+					if (
+						splide.index ===
+						splide.length - 1
+					) {
+						return;
+					}
+					splide.go('>');
+				}
+			);
+		}
+		/* スライド後 */
+		splide.on('moved', function () {
+			updateArrows();
+		});
+		/* モーダルIDとSplideを紐付け */
+		sliders[modal.id] = splide;
+	});
+	/* モーダルを開く */
 	const triggers =
-	document.querySelectorAll('.modal-trigger');
+		document.querySelectorAll('.modal-trigger');
 	triggers.forEach(function (trigger) {
-    trigger.addEventListener(
-      'click',
-      function () {
-        const modalId =
-          trigger.dataset.modal;
-        const modal =
-          document.getElementById(modalId);
-        if (!modal) {
-          return;
-        }
-        // モーダルを表示
-        modal.classList.add('is-open');
-        // 背景ページのスクロールを停止
-        document.body.style.overflow = 'hidden';
-        // Splideを更新
-        if (sliders[modalId]) {
-          sliders[modalId].refresh();
-        }
-      }
-    );
-  });
-  // 閉じるボタン
-  const closeButtons =
-    document.querySelectorAll('.modal__close');
-  closeButtons.forEach(function (button) {
-    button.addEventListener(
-      'click',
-      function () {
-        const modal =
-          button.closest('.modal');
-        if (!modal) {
-          return;
-        }
-        modal.classList.remove('is-open');
-        // ページのスクロールを復活
-        document.body.style.overflow = '';
-      }
-    );
-  });
-  // 背景クリックで閉じる
-  const overlays =
-    document.querySelectorAll('.modal__overlay');
-  overlays.forEach(function (overlay) {
-    overlay.addEventListener(
-      'click',
-      function () {
-        const modal =
-          overlay.closest('.modal');
-        if (!modal) {
-          return;
-        }
-        modal.classList.remove('is-open');
-        document.body.style.overflow = '';
-      }
-    );
-  });
-  // ESCキーで閉じる
-  document.addEventListener(
-    'keydown',
-    function (event) {
-      if (event.key !== 'Escape') {
-        return;
-      }
-      const openModal =
-        document.querySelector('.modal.is-open');
-      if (!openModal) {
-        return;
-      }
-      openModal.classList.remove('is-open');
-      document.body.style.overflow = '';
-    }
-  );
+		trigger.addEventListener(
+			'click',
+			function () {
+				const modalId =
+					trigger.dataset.modal;
+				const modal =
+					document.getElementById(modalId);
+				if (!modal) {
+					return;
+				}
+				/* モーダル表示 */
+				modal.classList.add('is-open');
+				/* 背景ページのスクロール停止 */
+				document.body.style.overflow = 'hidden';
+				/* Splide更新 */
+				if (sliders[modalId]) {
+					sliders[modalId].refresh();
+				}
+			}
+		);
+	});
+	/* 閉じるボタン */
+	const closeButtons =
+		document.querySelectorAll('.modal__close');
+	closeButtons.forEach(function (button) {
+		button.addEventListener(
+			'click',
+			function () {
+				const modal =
+					button.closest('.modal');
+				if (!modal) {
+					return;
+				}
+				modal.classList.remove('is-open');
+				document.body.style.overflow = '';
+			}
+		);
+	});
+	/* 背景クリック */
+	const overlays =
+		document.querySelectorAll('.modal__overlay');
+	overlays.forEach(function (overlay) {
+		overlay.addEventListener(
+			'click',
+			function () {
+				const modal =
+					overlay.closest('.modal');
+				if (!modal) {
+					return;
+				}
+				modal.classList.remove('is-open');
+				document.body.style.overflow = '';
+			}
+		);
+	});
+	/* ESCキー */
+	document.addEventListener(
+		'keydown',
+		function (event) {
+			if (event.key !== 'Escape') {
+				return;
+			}
+			const openModal =
+				document.querySelector('.modal.is-open');
+			if (!openModal) {
+				return;
+			}
+			openModal.classList.remove('is-open');
+			document.body.style.overflow = '';
+		}
+	);
 });
 </script>
 
