@@ -650,7 +650,7 @@
 		const diffX = event.clientX - startX;
 		const diffY = event.clientY - startY;
 		/* 縦方向の操作なら無視 */
-		if (Math.abs(diffX) < Math.abs(diffY) * 0.4) {
+		if (Math.abs(diffY) > Math.abs(diffX)) {
 			return;
 		}
 		/* 小さな動きはクリックとして扱う */
