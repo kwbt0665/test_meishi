@@ -3919,36 +3919,31 @@ footer{
 					--card-width: calc((100vw - 20px - 20px - var(--peek-width)) / 2);
 				}
 				#step-slider {
-	width: calc(100% + var(--left-peek));
-	margin-left: 0;
-	overflow: visible;
-
-	/* ドラッグ時の文字選択を禁止 */
-	user-select: none;
-	-webkit-user-select: none;
-
-	.splide__track {
-		overflow: visible;
-	}
-
-	.splide__list {
-		overflow: visible;
-		padding-left: var(--left-peek);
-	}
-
-	.splide__slide {
-		width: var(--card-width) !important;
-		flex: 0 0 var(--card-width);
-	}
-
-	/* 画像の選択・ドラッグを禁止 */
-	img {
-		user-select: none;
-		-webkit-user-select: none;
-		-webkit-user-drag: none;
-		pointer-events: none;
-	}
-}
+					width: calc(100% + var(--left-peek));
+					margin-left: 0;
+					overflow: visible;
+					/* ドラッグ時の文字選択を禁止 */
+					user-select: none;
+					-webkit-user-select: none;
+					.splide__track {
+						overflow: visible;
+					}
+					.splide__list {
+						overflow: visible;
+						padding-left: var(--left-peek);
+					}
+					.splide__slide {
+						width: var(--card-width) !important;
+						flex: 0 0 var(--card-width);
+					}
+					/* 画像の選択・ドラッグを禁止 */
+					img {
+						user-select: none;
+						-webkit-user-select: none;
+						-webkit-user-drag: none;
+						pointer-events: none;
+					}
+				}
 				.step-card{
 					width: var(--card-width);
 					.step-image{
@@ -3978,6 +3973,10 @@ footer{
 							width: 90%;
 							height: 90%;
 							object-fit: contain;
+							@media (max-width: 600px) {
+								width: 80%;
+								height: 80%;
+							}
 						}
 					}
 					.step-text {
@@ -3986,6 +3985,13 @@ footer{
 						line-height: 1.8;
 						font-weight: 600;
 						color: #333;
+						@media (max-width: 1200px) {
+							font-size: 1.25rem;
+							line-height: 1.6;
+						}
+						@media (max-width: 800px) {
+							font-size: 1rem;
+						}
 						@media (max-width: 600px) {
 							margin-top: 18px;
 							font-size: 0.75rem;
@@ -4099,6 +4105,10 @@ footer{
 					background-position: right 25px top 50%;
 					background-repeat: no-repeat;
 					background-size: 10px 18px;
+					cursor: pointer;
+					&:hover{
+						background-color: #F6F7FF;
+					}
 					&:last-child{
 						border-bottom: none;
 					}
@@ -4111,13 +4121,12 @@ footer{
 							border-top: #D9D9D9 solid 1px;
 							background-position: right 15px top 50%;
 						}
-					.modal-trigger {
-						cursor: pointer;
+					.list_txt {
 						font-size: 1rem;
 						color: #333;
-					&:hover{
-						color:#2944A1;
-					}
+						&:hover{
+							color:#2944A1;
+						}
 					@media (max-width: 600px) {
 							font-size: 0.75rem;
 							font-weight: 600;
