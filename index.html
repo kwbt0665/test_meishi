@@ -81,7 +81,19 @@
 					<div class="hdMenu" id="hdMenu">
 						<nav>
 							<ul>
-								<li class="meishi"><a href="#">名刺の作り方</a></li>
+								<!--PC only-->
+								<li class="dropdown onlypc">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">名刺の作り方<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="howto_meishi_lite.html" class="txt_wh">つくりかた1</a></li>
+										<li><a href="howto_meishi_detail.html" class="txt_wh">つくりかた2</a></li>
+									</ul>
+								</li>
+								<!--PC only END-->
+								<!--SP only-->
+								<li class="meishi"><a href="howto_meishi_lite.html">つくりかた1</a></li>
+								<li class="meishi"><a href="howto_meishi_detail.html">つくりかた2</a></li>
+								<!--SP only END-->
 								<li class="mfp"><a href="mfp.html">プリント方法</a></li>
 								<li class="faq"><a href="faq.html">よくある質問</a></li>
 								<li class="shop"><a href="https://networkprint.ne.jp/search_store/map.html">店舗検索</a></li>
@@ -359,11 +371,11 @@
 						<nav>
 							<div class="ftCmn_menu_grv">
 								<ul>
-									<li><a href="#">名刺の作り方</a></li>
+									<li><a href="howto_meishi_lite.html">つくりかた1</a></li>
+									<li><a href="howto_meishi_detail.html">つくりかた2</a></li>
 									<li><a href="mfp.html">プリント方法</a></li>
 									<li><a href="faq.html">よくある質問</a></li>
 									<li><a href="https://networkprint.ne.jp/search_store/map.html">店舗検索</a></li>
-									
 								</ul>
 								<ul>
 									<li><a href="https://www.busica.co.jp/">運営会社</a></li>
@@ -436,174 +448,185 @@
 	</script>
 
 	<script>
-		/* =========================================================
-		名刺画像は cards.js（自動生成）から読み込みます。
-		images/cards/ に画像を足したら update-cards.command を実行してください。
-		========================================================= */
-		const ALL_CARDS = (typeof CARD_IMAGES !== 'undefined' && CARD_IMAGES.length)
-		? CARD_IMAGES.slice()
-		: [];
+	/* =========================================================
+	名刺画像は cards.js（自動生成）から読み込みます。
+	images/cards/ に画像を足したら update-cards.command を実行してください。
+	========================================================= */
+	const ALL_CARDS = (typeof CARD_IMAGES !== 'undefined' && CARD_IMAGES.length)
+	? CARD_IMAGES.slice()
+	: [];
 
-		/* 配列をランダムに並べ替える（Fisher-Yates） */
-		const shuffle = (arr) => {
-		const a = arr.slice();
-		for (let i = a.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[a[i], a[j]] = [a[j], a[i]];
+	/* 配列をランダムに並べ替える（Fisher-Yates） */
+	const shuffle = (arr) => {
+	const a = arr.slice();
+	for (let i = a.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[a[i], a[j]] = [a[j], a[i]];
+	}
+	return a;
+	};
+
+	(function () {
+	/* 画像の実寸を読んで向きを判定する
+		横向き（幅 > 高さ）  → 90度回転させて縦向きに
+		正方形（ほぼ 1:1）   → 正方形のまま
+		縦向き               → その比率のまま                      */
+	const createCard = (src) => {
+		const el = document.createElement('div');
+		el.className = 'card';
+		const img = document.createElement('img');
+		img.alt = '';
+		img.decoding = 'async';
+
+		img.addEventListener('load', () => {
+		const nw = img.naturalWidth;
+		const nh = img.naturalHeight;
+		if (!nw || !nh) return;
+		const ratio = nw / nh;
+
+		if (ratio > 1.05) {
+			/* 横向き：縦向きの枠にして、中の画像を90度回転 */
+			el.style.aspectRatio = nh + ' / ' + nw;
+			el.classList.add('is-rotated');
+			img.style.width  = 'calc(var(--card-width) * ' + ratio + ')';
+			img.style.height = 'var(--card-width)';
+		} else {
+			/* 正方形・縦向き：実寸そのままの比率にする（トリミングなし） */
+			el.style.aspectRatio = nw + ' / ' + nh;
 		}
-		return a;
-		};
-
-		(function () {
-		/* 画像の実寸を読んで向きを判定する
-			横向き（幅 > 高さ）  → 90度回転させて縦向きに
-			正方形（ほぼ 1:1）   → 正方形のまま
-			縦向き               → その比率のまま                      */
-		const createCard = (src) => {
-			const el = document.createElement('div');
-			el.className = 'card';
-			const img = document.createElement('img');
-			img.alt = '';
-			img.decoding = 'async';
-
-			img.addEventListener('load', () => {
-			const nw = img.naturalWidth;
-			const nh = img.naturalHeight;
-			if (!nw || !nh) return;
-			const ratio = nw / nh;
-
-			if (ratio > 1.05) {
-				/* 横向き：縦向きの枠にして、中の画像を90度回転 */
-				el.style.aspectRatio = nh + ' / ' + nw;
-				el.classList.add('is-rotated');
-				img.style.width  = 'calc(var(--card-width) * ' + ratio + ')';
-				img.style.height = 'var(--card-width)';
-			} else {
-				/* 正方形・縦向き：実寸そのままの比率にする（トリミングなし） */
-				el.style.aspectRatio = nw + ' / ' + nh;
-			}
-			});
-
-			img.src = src;
-			el.appendChild(img);
-			return el;
-		};
-
-		/* 列の高さを埋めるまで画像を繰り返し、同じ並びを2周ぶん敷く。
-			前半と後半が同一なので translateY(±50%) が継ぎ目なくループする。 */
-		const buildTrack = (trackEl, images) => {
-			if (!images || !images.length) return;
-			const st = getComputedStyle(document.documentElement);
-			const cardW = parseFloat(st.getPropertyValue('--card-width'));
-			const gap   = parseFloat(st.getPropertyValue('--card-gap'));
-			/* 高さは画像ごとに違うので、縦向きを基準に必要枚数を概算する */
-			const estUnit = cardW * 1075 / 650 + gap;
-			const needed  = trackEl.closest('.cards').offsetHeight;
-			const count   = Math.max(images.length, Math.ceil(needed / estUnit) + 2);
-
-			const seq = [];
-			for (let i = 0; i < count; i++) seq.push(images[i % images.length]);
-			/* 同じ並びを2周ぶん敷く → translateY(±50%) がちょうど1周ぶんになる */
-			[...seq, ...seq].forEach((src) => trackEl.appendChild(createCard(src)));
-		};
-
-		const COLUMNS = 3;
-
-		/* 全画像をシャッフルして各列に分配する。
-			同じ画像が複数の列に入らないので、画面上で重複して見えない。 */
-		const splitPools = () => {
-			const all = shuffle(ALL_CARDS);
-			if (all.length < COLUMNS) return Array.from({ length: COLUMNS }, () => all);
-			const pools = Array.from({ length: COLUMNS }, () => []);
-			all.forEach((src, i) => pools[i % COLUMNS].push(src));
-			return pools;
-		};
-
-		let pools = splitPools();
-
-		window.renderCards = (reshuffle = false) => {
-			if (reshuffle) pools = splitPools();
-			for (let i = 0; i < COLUMNS; i++) {
-			const t = document.getElementById('track' + (i + 1));
-			if (!t) continue;
-			t.innerHTML = '';
-			buildTrack(t, pools[i]);
-			}
-		};
-
-		window.renderCards();
-
-		let timer;
-		window.addEventListener('resize', () => {
-			clearTimeout(timer);
-			timer = setTimeout(window.renderCards, 250);
 		});
-		})();
+
+		img.src = src;
+		el.appendChild(img);
+		return el;
+	};
+
+	/* 列の高さを埋めるまで画像を繰り返し、同じ並びを2周ぶん敷く。
+		前半と後半が同一なので translateY(±50%) が継ぎ目なくループする。 */
+	const buildTrack = (trackEl, images) => {
+		if (!images || !images.length) return;
+		const st = getComputedStyle(document.documentElement);
+		const cardW = parseFloat(st.getPropertyValue('--card-width'));
+		const gap   = parseFloat(st.getPropertyValue('--card-gap'));
+		/* 高さは画像ごとに違うので、縦向きを基準に必要枚数を概算する */
+		const estUnit = cardW * 1075 / 650 + gap;
+		const needed  = trackEl.closest('.cards').offsetHeight;
+		const count   = Math.max(images.length, Math.ceil(needed / estUnit) + 2);
+
+		const seq = [];
+		for (let i = 0; i < count; i++) seq.push(images[i % images.length]);
+		/* 同じ並びを2周ぶん敷く → translateY(±50%) がちょうど1周ぶんになる */
+		[...seq, ...seq].forEach((src) => trackEl.appendChild(createCard(src)));
+	};
+
+	const COLUMNS = 3;
+
+	/* 全画像をシャッフルして各列に分配する。
+		同じ画像が複数の列に入らないので、画面上で重複して見えない。 */
+	const splitPools = () => {
+		const all = shuffle(ALL_CARDS);
+		if (all.length < COLUMNS) return Array.from({ length: COLUMNS }, () => all);
+		const pools = Array.from({ length: COLUMNS }, () => []);
+		all.forEach((src, i) => pools[i % COLUMNS].push(src));
+		return pools;
+	};
+
+	let pools = splitPools();
+
+	window.renderCards = (reshuffle = false) => {
+		if (reshuffle) pools = splitPools();
+		for (let i = 0; i < COLUMNS; i++) {
+		const t = document.getElementById('track' + (i + 1));
+		if (!t) continue;
+		t.innerHTML = '';
+		buildTrack(t, pools[i]);
+		}
+	};
+
+	window.renderCards();
+
+	let timer;
+	window.addEventListener('resize', () => {
+		clearTimeout(timer);
+		timer = setTimeout(window.renderCards, 250);
+	});
+	})();
 	</script>
 	<script>
-		(function () {
-		/* 画像リストは cards.js（自動生成）の CARD_IMAGES を利用します。
-			images/cards/ に画像を足したら update-cards.command を実行してください。 */
-		const ALL = (typeof CARD_IMAGES !== 'undefined' && CARD_IMAGES.length) ? CARD_IMAGES.slice() : [];
+	(function () {
+	/* 画像リストは cards.js（自動生成）の CARD_IMAGES を利用します。
+		images/cards/ に画像を足したら update-cards.command を実行してください。 */
+	const ALL = (typeof CARD_IMAGES !== 'undefined' && CARD_IMAGES.length) ? CARD_IMAGES.slice() : [];
 
-		/* ファイル名の頭文字で 3 グループに振り分け（T- / Y- / S-） */
-		const base = (p) => p.split('/').pop().toUpperCase();
-		const pick = (pre) => ALL.filter(p => base(p).startsWith(pre)).sort();
-		const GROUPS = { T: pick('T-'), Y: pick('Y-'), S: pick('S-') };
+	/* 配列をランダムに並べ替える（Fisher-Yates） */
+	const shuffle = (arr) => {
+		const a = arr.slice();
+		for (let i = a.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[a[i], a[j]] = [a[j], a[i]];
+		}
+		return a;
+	};
 
-		const cssNum = (name) =>
-			parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name));
+	/* ファイル名の頭文字で 3 グループに振り分け（T- / Y- / S-）、各行の中をランダムに並べる。
+		並びは読み込み時に1回決まり、リサイズしても変わらない。 */
+	const base = (p) => p.split('/').pop().toUpperCase();
+	const pick = (pre) => shuffle(ALL.filter(p => base(p).startsWith(pre)));
+	const GROUPS = { T: pick('T-'), Y: pick('Y-'), S: pick('S-') };
 
-		/* 短辺 shortPx を渡し、どの向きでも短辺がその長さになるよう高さを決める */
-		const makeCard = (src, shortPx) => {
-			const el = document.createElement('div');
-			el.className = 'tcard';
-			el.style.height = shortPx + 'px';           /* 横・正方形の暫定値 */
-			const img = document.createElement('img');
-			img.src = src; img.alt = ''; img.decoding = 'async';
-			img.addEventListener('load', () => {
-			const nw = img.naturalWidth, nh = img.naturalHeight;
-			if (!nw || !nh) return;
-			el.style.height = (nh > nw ? shortPx * nh / nw : shortPx) + 'px';  /* 縦長は高さを伸ばす */
-			});
-			el.appendChild(img);
-			return el;
-		};
+	const cssNum = (name) =>
+		parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name));
 
-		/* 行の幅を画面幅の2倍以上まで埋め、同じ並びを2周ぶん敷く（横方向シームレスループ） */
-		const buildRow = (trackEl, imgs, shortPx) => {
-			const row = trackEl.closest('.trow');
-			if (!imgs.length) { row.style.display = 'none'; return; }
-			row.style.display = '';
-			trackEl.innerHTML = '';
-
-			const gap = cssNum('--card-gap');
-			const groupW = imgs.length * (shortPx * 1.2 + gap);
-			const container = document.querySelector('.showcase').offsetWidth || window.innerWidth;
-			const repeats = Math.max(2, Math.ceil(container / groupW) + 1);
-
-			const one = [];
-			for (let r = 0; r < repeats; r++) one.push(...imgs);
-			[...one, ...one].forEach(src => trackEl.appendChild(makeCard(src, shortPx)));
-		};
-
-		window.renderShowcase = () => {
-			const s = cssNum('--card-short');
-			const sS = s * cssNum('--s-ratio');           /* S は 62/55 倍 */
-			buildRow(document.getElementById('rowT'), GROUPS.T, s);
-			buildRow(document.getElementById('rowY'), GROUPS.Y, s);
-			buildRow(document.getElementById('rowS'), GROUPS.S, sS);
-		};
-
-		window.renderShowcase();
-
-		let timer;
-		window.addEventListener('resize', () => {
-			clearTimeout(timer);
-			timer = setTimeout(window.renderShowcase, 250);
+	/* 短辺 shortPx を渡し、どの向きでも短辺がその長さになるよう高さを決める */
+	const makeCard = (src, shortPx) => {
+		const el = document.createElement('div');
+		el.className = 'tcard';
+		el.style.height = shortPx + 'px';           /* 横・正方形の暫定値 */
+		const img = document.createElement('img');
+		img.src = src; img.alt = ''; img.decoding = 'async';
+		img.addEventListener('load', () => {
+		const nw = img.naturalWidth, nh = img.naturalHeight;
+		if (!nw || !nh) return;
+		el.style.height = (nh > nw ? shortPx * nh / nw : shortPx) + 'px';  /* 縦長は高さを伸ばす */
 		});
-		})();
-		</script>
+		el.appendChild(img);
+		return el;
+	};
+
+	/* 行の幅を画面幅の2倍以上まで埋め、同じ並びを2周ぶん敷く（横方向シームレスループ） */
+	const buildRow = (trackEl, imgs, shortPx) => {
+		const row = trackEl.closest('.trow');
+		if (!imgs.length) { row.style.display = 'none'; return; }
+		row.style.display = '';
+		trackEl.innerHTML = '';
+
+		const gap = cssNum('--card-gap');
+		const groupW = imgs.length * (shortPx * 1.2 + gap);
+		const container = document.querySelector('.showcase').offsetWidth || window.innerWidth;
+		const repeats = Math.max(2, Math.ceil(container / groupW) + 1);
+
+		const one = [];
+		for (let r = 0; r < repeats; r++) one.push(...imgs);
+		[...one, ...one].forEach(src => trackEl.appendChild(makeCard(src, shortPx)));
+	};
+
+	window.renderShowcase = () => {
+		const s = cssNum('--card-short');
+		const sS = s * cssNum('--s-ratio');           /* S は 62/55 倍 */
+		buildRow(document.getElementById('rowT'), GROUPS.T, s);
+		buildRow(document.getElementById('rowY'), GROUPS.Y, s);
+		buildRow(document.getElementById('rowS'), GROUPS.S, sS);
+	};
+
+	window.renderShowcase();
+
+	let timer;
+	window.addEventListener('resize', () => {
+		clearTimeout(timer);
+		timer = setTimeout(window.renderShowcase, 250);
+	});
+	})();
+	</script>
 		<script>
 			Fancybox.bind("[data-fancybox]", {
 				closeButton: true,
