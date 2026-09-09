@@ -1,17 +1,28 @@
 /* 自動生成ファイル — 直接編集しないでください。
    images/cards/ に画像を追加・削除したら update-cards.command を実行して作り直します。
-   生成日時: 2026-07-14 16:11:12 */
+   生成日時: 2026-09-08 17:16:13 */
 const CARD_IMAGES = [
+  'images/cards/S-01_Aqua.png',
+  'images/cards/S-01_Pink.png',
+  'images/cards/S-01_Yellow.png',
+  'images/cards/S-S-02.png',
+  'images/cards/S-SH-01_Olive.png',
+  'images/cards/S-SH-01_Purple.png',
+  'images/cards/S-SH-02_Brown.png',
+  'images/cards/S-SH-16.png',
   'images/cards/T-01_Navy.png',
   'images/cards/T-02_Navy.png',
   'images/cards/T-03_Gold.png',
   'images/cards/T-04_Navy.png',
   'images/cards/T-05_Purple.png',
+  'images/cards/T-K-B-02.png',
+  'images/cards/T-K-S-01.png',
   'images/cards/T-S-01.png',
   'images/cards/T-S-02.png',
   'images/cards/T-S-03.png',
   'images/cards/T-S-04.png',
   'images/cards/T-S-05.png',
+  'images/cards/T-SC-14.png',
   'images/cards/T-SH-01.png',
   'images/cards/T-SH-03.png',
   'images/cards/Y-01_Green.png',
@@ -27,11 +38,7 @@ const CARD_IMAGES = [
   'images/cards/Y-S-08.png',
   'images/cards/Y-S-09.png',
   'images/cards/Y-S-10.png',
+  'images/cards/Y-S-35.png',
   'images/cards/Y-SH-01.png',
   'images/cards/Y-SH-02.png',
-  'images/cards/S-01_Aqua.png',
-  'images/cards/S-SH-01_Purple.png',
-  'images/cards/S-SH-02_Brown.png',
-  'images/cards/T-K-B-02.png',
-  'images/cards/T-K-S-01.png',
 ];
