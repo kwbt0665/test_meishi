@@ -337,10 +337,7 @@ header {
 .hdCmn .hdCmn_inner .hdMenu ul li:last-child {
   margin: 0;
 }
-.hdCmn .hdCmn_inner .hdMenu ul li.photo {
-  display: none !important;
-}
-.hdCmn .hdCmn_inner .hdMenu ul li.calendar {
+.hdCmn .hdCmn_inner .hdMenu ul li.meishi {
   display: none !important;
 }
 @media (max-width: 1062px) {
@@ -809,6 +806,11 @@ footer .ft .ftImg {
   .copy {
     text-align: center;
   }
+}
+
+.dropdown-menu {
+  background-color: #2944A1;
+  border: 1px solid #fff;
 }
 
 /*--------------トップページ-----------------*/
