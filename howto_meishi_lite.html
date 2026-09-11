@@ -1301,7 +1301,19 @@
 				document.body.style.overflow = 'hidden';
 				/* Splide更新 */
 				if (sliders[modalId]) {
+					sliders[modalId].go(0);
 					sliders[modalId].refresh();
+
+					const prevButton = modal.querySelector('.modal__arrow--prev');
+					const nextButton = modal.querySelector('.modal__arrow--next');
+
+					if (prevButton) {
+						prevButton.classList.add('is-disabled');
+					}
+
+					if (nextButton) {
+						nextButton.classList.remove('is-disabled');
+					}
 				}
 			}
 		);
