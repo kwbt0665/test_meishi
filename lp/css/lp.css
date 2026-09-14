@@ -356,7 +356,7 @@
 }
 @media (max-width: 650px) {
 	.title{
-		font-size: 2.25rem;
+		font-size: 2rem;
 		text-underline-offset: 8px;
 	}
 	.onayami{
@@ -369,7 +369,7 @@
 		gap: 60px;
 	}
 	.onayami li{
-		width: 100%;
+		width: 90%;
 	}
 	.onayami .box_01{
 		padding-right: 9vw;
@@ -378,7 +378,7 @@
 		padding-left: 9vw;
 	}
 	.onayami p{
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 		margin-top: 25px;
 	}
 	.onayami .left_txt{
@@ -453,7 +453,7 @@
 }
 @media (max-width: 530px) {
 	.solution p{
-		font-size: 1.25rem;
+		font-size: 1.2rem;
 	}
 }
 @media (max-width: 400px) {
@@ -465,6 +465,11 @@
 /* step overwrite */
 .step{
 	padding: 60px 46px 100px;
+}
+@media (max-width: 650px){
+	.step{
+		padding: 60px 20px 60px;
+	}
 }
 
 /* cv_area */
@@ -507,7 +512,7 @@
 		padding: 40px 30px;
 	}
 	.cv_area .button img{
-		max-width: 400px;
+		max-width: 380px;
 	}
 }
 @media (max-width: 650px) {
@@ -520,6 +525,8 @@
 	.cv_area .button{
 		border-radius: 16px;
 		margin-top: 40px;
+		width: 100%;
+		max-width: 360px;
 	}
 	.only_pc{
 		display: none;
@@ -533,7 +540,6 @@
 		font-size: 1rem;
 	}
 	.cv_area .button{
-		width: 100%;
 		max-width: 330px;
 		padding: 30px;
 		margin-top: 30px;
