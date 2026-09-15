@@ -54,8 +54,10 @@
 	color: #fff;
 	z-index: 30;
 	@media (max-width: 600px) {
-		top: calc(5vh);
-		right: calc(2.5vw + 20px);
+		/* top: calc(5vh);
+		right: calc(2.5vw + 20px); */
+		top: calc(1.5vh);
+		right: calc(2.5vw);
 		background-size: 18px;
 	}
 }
@@ -84,7 +86,7 @@
 	@media (max-width: 600px) {
 		font-size: 0.9375rem;
 		text-align: left;
-		margin: 30px 0;
+		margin: 5px 0 30px;
 	}
 }
 .modal__slider .txt {
@@ -154,7 +156,8 @@
 	width: 95vw;
 	max-width: 95vw;
 	height: 90vh;
-	margin: 5vh auto;
+	margin: 0 auto 5vh;  
+	/* margin: 5vh auto; */
 	padding: 0;
 	overflow-y: auto;
 	overflow-x: hidden;

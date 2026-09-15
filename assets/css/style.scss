@@ -1889,11 +1889,20 @@ footer{
 				}
 				.size_txt{
 					font-size: 1rem;
-					margin: 50px auto;
+					margin: 50px auto 0;
 					color: #fff;
 					@media (max-width: 650px){
 						font-size: 0.875rem;
-						margin: 20px auto 30px;
+						margin: 20px auto 0;
+					}
+				}
+				.yellow_txt{
+					font-size: 0.9em;
+					font-weight: 600;
+					margin: 0 auto 50px;
+					color: #F1CC3F;
+					@media (max-width: 650px){
+						margin: 0 auto 30px;
 					}
 				}
 				.type_01{
