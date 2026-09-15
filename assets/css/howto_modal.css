@@ -86,7 +86,7 @@
 	@media (max-width: 600px) {
 		font-size: 0.9375rem;
 		text-align: left;
-		margin: 5px 0 30px;
+		margin: 5px 0 20px;
 	}
 }
 .modal__slider .txt {
@@ -98,7 +98,7 @@
 	@media (max-width: 600px) {
 		font-size: 0.875rem;
 		text-align: left;
-		margin: 40px 0;
+		margin: 20px 0 40px;
 	}
 }
 .modal__arrow {
