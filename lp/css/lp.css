@@ -822,8 +822,9 @@
 }
 #LP02 .onayami ul{
 	display: flex;
+	justify-content: center;
 	margin: 100px auto 0;
-	gap: 180px;
+	gap: 100px;
 	width: 100%;
 	max-width: 920px;
 }
@@ -841,7 +842,6 @@
 }
 @media (max-width: 1400px) {
 	#LP02 .onayami ul{
-		justify-content: center;
 		gap: 80px;
 	}
 	#LP02 .onayami p{
