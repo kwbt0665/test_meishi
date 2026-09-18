@@ -778,6 +778,9 @@
 		display: block;
 		padding: 0 50px 60px;
 	}
+	#LP02 .sub {
+		margin: 0 0 40px;
+	}
 	#LP02 .stores {
 		margin: 0 auto;
 		gap: 30px;
